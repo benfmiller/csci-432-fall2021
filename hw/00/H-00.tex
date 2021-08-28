@@ -137,13 +137,29 @@ the tree.
 
 \paragraph{Answer}
 
-I duhno
-\todo{}
+A tree is a graph with no circuits, so only one edge is added for each node added
+
+let $m$ be the number of edges.
+
+For every integer $n \geq 1, n - 1 = m$
+
+{\bf Basis:} n = 1 is true as $1 - 1 = 0$. n = 2 is true as $2-1=0$
+
+{\bf Inductive Assumption:} Assume that $n - 1 = m$ is true.
+
+    {\bf Inductive Step:} $$(n+1) -1 = m $$
+$$(n+1) -1 = (n +1) - 1$$
+$$n=n$$
+$$n=m +1$$
+$$n-1=m$$
+
+With help from https://www.geeksforgeeks.org/some-theorems-on-trees/
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \collab{\todo{}}
 \nextprob{Big-O}
+
 Use the definition of big-O notation to prove that $f(x)=n^2 + 3n -2$ is
 $O(n^2)$.
 
