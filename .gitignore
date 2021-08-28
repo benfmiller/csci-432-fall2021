@@ -1,1 +1,8 @@
 hw/*/*.pdf
+hw/*/*.aux
+hw/*/*.fdb_latexmk
+hw/*/*.fls
+hw/*/*.log
+hw/*/*.synctex.gz
+
+Session.vim
