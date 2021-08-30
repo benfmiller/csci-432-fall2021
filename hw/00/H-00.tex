@@ -2,6 +2,7 @@
 \usepackage{../fasy-hw}
 \usepackage{algpseudocode}
 \usepackage{hyperref}
+\usepackage{graphicx}
 
 %% UPDATE these variables:
 \renewcommand{\hwnum}{0}
@@ -10,9 +11,13 @@
 \collab{\todo{list your collaborators here}}
 \date{due: 30 August 2021}
 
+\graphicspath{ {./} }
+
 \begin{document}
 
 \maketitle
+
+\todo{citations}
 
 This homework assignment should be
 submitted as a single PDF file both to D2L and to Gradescope.
@@ -88,7 +93,8 @@ Answer the following questions:
 
 Make a post in the class discussion board. No answer needs to be written here.
 But, for bonus points, include a screenshot of your post.
-\todo{}
+
+\includegraphics{post_screenshot.jpg}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -102,9 +108,8 @@ But, for bonus points, include a screenshot of your post.
             sources!
             
             \paragraph{Answer}
-            Plagiarism is using the ideas or work of another as one's own without giving them credit.
-            
-            I used google's definition as a reference, which in turn is from Oxford Languages.
+            Plagiarism is using the ideas or work of another as one's own without giving them credit.  
+            \footnote{I used google's definition as a reference, which in turn is from Oxford Languages.}
             
       \item If you have observed plagiarism or cheating in a classroom (either as
             an instructor or as a student), explain the situation and how it made
@@ -138,6 +143,7 @@ nodes/vertices has exactly $n-1$ edges, where $n$ is the number of vertices in
 the tree.
 
 \paragraph{Answer}
+\footnote{With help from https://www.geeksforgeeks.org/some-theorems-on-trees/}
 
 A tree is a graph with no circuits, so only one edge is added for each node added
 
@@ -155,7 +161,6 @@ $$n=n$$
 $$n=m +1$$
 $$n-1=m$$
 
-With help from https://www.geeksforgeeks.org/some-theorems-on-trees/
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -166,6 +171,7 @@ Use the definition of big-O notation to prove that $f(x)=n^2 + 3n -2$ is
 $O(n^2)$.
 
 \paragraph{Answer}
+\footnote{Used past work from Discrete Mathematics to help}
 
 For $n \ge 1$, $ n^2 + 3n -2 \leq A n^2$
 
@@ -174,7 +180,6 @@ Hence $f(x) \leq A \cdot n^2$, when $A = 1$ and $n \geq a = 1$
 Therefore, $f(x)=n^2 + 3n -2$ is $O(n^2)$.
 
 \paragraph{}
-Used past work from Discrete Mathematics to help
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \collab{}
@@ -185,6 +190,7 @@ an even number.
       \item What is the definition of an odd number?
             
             \paragraph{Answer} If a number x is odd, then x will not be an integer if divided by 2.
+            \footnote{Used past work from Discrete Mathematics to help}
             
       \item What is the definition of an even number?
             
@@ -213,7 +219,6 @@ an even number.
             
             
             \paragraph{}
-            Used past work from Discrete Mathematics to help
             
 \end{enumerate}
 
@@ -238,21 +243,28 @@ Bubblesort
       \item \emph{How} does it work? (Hint: give pseudocode!)
             
             \paragraph{Answer}
+            \footnote{With help from \href{https://en.wikipedia.org/wiki/Bubble_sort}{wikipedia}}
             
-            \begin{algorithmic}
-                  \State $A \gets length(array)$
-                  \State $P \gets 0$
-                  \State $SwapOcurred \gets true$
-                  \While{$SwapOcurred == true$}
-                  \State $SwapOcurred \gets false$
-                  \For{$i$ in $1$ to $n-1$}
-                  \If {$array[i-1] > array[i]$}
-                  \State $swap(array[i-1], array[i])$
-                  \State $SwapOcurred \gets true$
-                  \EndIf
-                  \EndFor
-                  \EndWhile
-            \end{algorithmic}
+            \begin{algorithm}\caption{\textsc{Bubblesort}($array$)}\label{alg:seb}
+                  {\bf Input:} array $array$ of sortable items\\
+                  {\bf Output:} Sorted array
+                  \begin{algorithmic}[1]
+                        \State $A \gets length(array)$
+                        \State $P \gets 0$
+                        \State $SwapOcurred \gets true$
+                        \While{$SwapOcurred == true$}
+                        \State $SwapOcurred \gets false$
+                        \For{$i$ in $1$ to $n-1 - P$}
+                        \If {$array[i-1] > array[i]$}
+                        \State $swap(array[i-1], array[i])$
+                        \State $SwapOcurred \gets true$
+                        \EndIf
+                        \EndFor
+                        \State $ P \gets P + 1$
+                        \EndWhile\\ 
+                        \Return $array$
+                  \end{algorithmic}
+            \end{algorithm}
             
       \item \emph{How fast} does it work?  Give the asymptotic running time.
             Note: typically, you will give this as the worst-case running time.
@@ -279,7 +291,6 @@ Bubblesort
             
 \end{enumerate}
 
-{\bf With help from \href{https://en.wikipedia.org/wiki/Bubble_sort}{wikipedia}}
 
 Note: in all future HWs, if you are asked to come up with an algorithm, you are
 expected to give an algorithm that beats the brute force (and, if possible, of
