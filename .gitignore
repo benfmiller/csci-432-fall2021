@@ -4,5 +4,15 @@ hw/*/*.fdb_latexmk
 hw/*/*.fls
 hw/*/*.log
 hw/*/*.synctex.gz
+hw/*/*.out
+notes/*/*.pdf
+notes/*/*.aux
+notes/*/*.fdb_latexmk
+notes/*/*.fls
+notes/*/*.log
+notes/*/*.synctex.gz
+notes/*/*.out
 
+.icon
+myNotes
 Session.vim
