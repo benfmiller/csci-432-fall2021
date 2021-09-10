@@ -4,7 +4,7 @@
 %% UPDATE these variables:
 \renewcommand{\hwnum}{1}
 \title{Advanced Algorithms, Homework \hwnum}
-\author{\todo{Your Name Here}}
+\author{Ben Miller}
 \collab{\todo{list your collaborators here}}
 \date{due: 13 September 2021}
 
@@ -13,7 +13,7 @@
 \maketitle
 
 This homework assignment should be
-submitted as a single PDF file both to D2L and to Gradescope.
+submitted as a single PDF file {\bf both to D2L and to Gradescope.}
 
 General homework expectations:
 \begin{itemize}
@@ -61,8 +61,26 @@ Work in a group of size $\geq 2$.  Explain your strategy for working in a group.
     \item Use the definition of big-Theta notation to prove that $f(x)=4n-5$
         is $\Theta(n+1)$.
 
+        \paragraph{Definition}
+        f is $\Theta(g)\ \iff\ f\ is\ O(g)\ and\ f\ is\ \Omega(g)$
+
+        i.e., $ a, b \in R \geq 0, n_{0} \in R$
+    $|\ \forall n \geq n_0$
+
+    $0 \leq a* g(n) \leq f(n) \leq b*g(n)$
+
         \paragraph{Answer}
-        \todo{}
+        \begin{proof}
+        let a = 1, b = 4, and n_0 = 2
+
+        $\forall n \geq n_0, 1*n$
+
+        $
+        $$
+        $\therefore f(n)\ is\ \Theta(n)$
+        \end{proof}
+
+
 
     \item Use induction to prove that, for all $n \in \N$, the complete graph on
         $n$ vertices (denoted by the symbol~$K_n$) has $\frac{n(n-1)}{2}$~edges.
