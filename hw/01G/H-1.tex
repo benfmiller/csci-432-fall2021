@@ -109,11 +109,13 @@ Work in a group of size $\geq 2$.  Explain your strategy for working in a group.
           {\bf Inductuve Step: } let $k \in \mathbb{Z}\ \|\ k_{0} = 1$ suppose that f (k) is true,
           we will show that f (k+1) is also true.
 
-          \[ \sum^{(k+1)-1}_{j=0} j = ( \sum^{k-1}_{j=0} j ) + k\]
-          \[= \frac{k(k-1)}{2} + (k)\]
-          \[= \frac{k(k-1)}{2} + \frac{2(k)}{2}\]
-          \[= \frac{k^2 -k + 2k}{2}\]
-          \[= \frac{k^2 + k}{2} \]
+          \begin{gather*}
+           \sum^{(k+1)-1}_{j=0} j = ( \sum^{k-1}_{j=0} j ) + k\\
+          = \frac{k(k-1)}{2} + k\\
+          = \frac{k(k-1)}{2} + \frac{2k}{2}\\
+          = \frac{k^2 -k + 2k}{2}\\
+          = \frac{k^2 + k}{2}
+          \end{gather*}
 
           The other side of the equation is
 
@@ -171,6 +173,29 @@ closed form, use induction to prove that it is correct.  For the asymptotic
 form, use the definition of big-Theta to justify.
 
 \paragraph{Answer}
+
+{\bf Closed Form:} $T (n) = n$
+
+{\bf Basis:} $T (1) = 1$
+
+{\bf Inductive Assumption:}
+
+let $k \in \mathbb{N} \geq k_{0}\ |\ k_{0} \geq 1$
+
+Assume that $T (k) = k$
+
+\begin{align*}
+    T (k + 1) &= T((k+1)-1) +1\\
+    &= ((k+1) -1 ) +1\\
+    &= k + 1
+\end{align*}
+
+$\therefore T(k+1)=k+1$
+
+{\bf Asymptotic Form:} $T(n)=\Theta(n)$
+
+
+
 \todo{}
 
 
