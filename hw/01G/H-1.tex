@@ -243,19 +243,59 @@ sort the pancakes so that smaller pancakes are on top of larger pancakes.
 The only operation you can perform is a flip—insert a spatula under the
 top k pancakes, for some integer k between 1 and n, and flip them all over.
 
-(a) Describe an algorithm to sort an arbitrary stack of n pancakes using
+{\bf (a) Describe an algorithm to sort an arbitrary stack of n pancakes using
 O (n) flips. Exactly how many flips does your algorithm perform in the
-worst case?15 [Hint: This problem has nothing to do with the Tower of
-Hanoi.]
-
-(b) For every positive integer n, describe a stack of n pancakes that requires
-Ω (n) flips to sort.
+worst case? [Hint: This problem has nothing to do with the Tower of
+Hanoi.]}
 
 \paragraph{Answer, Part (a)}
 
-\todo{}
+In the array representation of the pancake stack, the first index of the array
+is the top pancake.
+
+The general procedure for our algorithm will be to find the largest, unsorted pancake,
+insert the spatula under it to flip it to the top, then flip it to the bottom of the stack.
+Then, we will do the same for the substack not including the pancake on the bottom and repeat until it is sorted.
+
+\begin{algorithm} \caption{\textsc{Pancake Sort} ($PancakeStack$)}\label{alg:seb}
+    {\bf Input:} $PancakeStack$ is a stack of differently sized pancakes\\
+    {\bf Output:} A stack of differently sized pancakes sorted by size
+    \begin{algorithmic}[1]
+        \State$n \gets size(PancakeStack)$
+        \State$numPasses \gets 0$
+        \State$biggestPancakeIndex \gets 1$
+        \State$FlipOcurred \gets true$
+        \While{$FlipOcurred = true$}
+        \State$FlipOcurred \gets false$
+        \For{$i$ in $1$ to $n - numPasses$}
+        \If{$PancakeStack[i] > PancakeStack[biggestPancakeIndex]$}
+        \State$biggestPancakeIndex \gets i$
+        \EndIf{}
+        \EndFor{}
+        \If{$biggestPancakeIndex \neq n - numPasses$}
+        \State$flip(biggestPancakeIndex)$
+        \State$flip(n - numPasses)$
+        \State$FlipOcurred \gets true$
+        \EndIf{}
+        \State$ numPasses \gets numPasses + 1$
+        \State$biggestPancakeIndex \gets 1$
+        \EndWhile{}\\
+        \Return$PancakeStack$
+    \end{algorithmic}
+\end{algorithm}
+
+For one pancake, 0 flips are required. For 2 pancakes, 1 flip may be required. For any other number of pancakes,
+two flips may be required. One flip is required to move a pancake to the top, then another flip is required to
+move it to the bottom.
+
+Thus, in the worst case, $2n - 3$ flips could occur.
+
+{\bf (b) For every positive integer n, describe a stack of n pancakes that requires
+Ω (n) flips to sort.}
 
 \paragraph{Answer, Part (b)}
+
+If
 
 \todo{}
 
