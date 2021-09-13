@@ -295,9 +295,13 @@ Thus, in the worst case, $2n - 3$ flips could occur.
 
 \paragraph{Answer, Part (b)}
 
-If
+If one were to construct a pancake from a sorted pancake stack by alternating the pancake placement on the
+top and on the bottom of the new stack, one flip would be required for every pancake except for the last one.
+The new stack would be small in the middle and large on the top and bottom. This would give us $\Omega(n)$ flips.
 
-\todo{}
+Likewise, a new stack could be constructed in the reverse order so that it was large in the center and small on
+the top and bottom, 2 flips could be required for each pancake except for the last two pancakes, which would
+also give $\Omega(n)$ flips.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \collab{\todo{}}
