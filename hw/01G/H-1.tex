@@ -18,28 +18,28 @@ submitted as a single PDF file {\bf both to D2L and to Gradescope.}
 
 General homework expectations:
 \begin{itemize}
-      \item Homework should be typeset using LaTex.
-      \item Answers should be in complete sentences and proofread.
-      \item You will not plagiarize, nor will you share your written solutions
-            with classmates.
-      \item List collaborators at the start of each question using the
-            \texttt{collab} command.
-      \item Put your answers where the \texttt{todo} command currently is (and
-            remove the \texttt{todo}, but not the word \texttt{Answer}).
-      \item If you are asked to come up with an algorithm, you are
-            expected to give an algorithm that beats the brute force (and, if possible, of
-            optimal time complexity). With your algorithm, please provide the following:
-            \begin{itemize}
-                  \item \emph{What}: A prose explanation of the problem and the algorithm,
-                        including a description of the input/output.
-                  \item \emph{How}: Describe how the algorithm works, including giving
-                        psuedocode for it.  Be sure to reference the pseudocode
-                        from within the prose explanation.
-                  \item \emph{How Fast}: Runtime, along with justification.  (Or, in the
-                        extreme, a proof of termination).
-                  \item \emph{Why}: Statement of the loop invariant for each loop, or
-                        recursion invariant for each recursive function.
-            \end{itemize}
+	\item Homework should be typeset using LaTex.
+	\item Answers should be in complete sentences and proofread.
+	\item You will not plagiarize, nor will you share your written solutions
+	      with classmates.
+	\item List collaborators at the start of each question using the
+	      \texttt{collab} command.
+	\item Put your answers where the \texttt{todo} command currently is (and
+	      remove the \texttt{todo}, but not the word \texttt{Answer}).
+	\item If you are asked to come up with an algorithm, you are
+	      expected to give an algorithm that beats the brute force (and, if possible, of
+	      optimal time complexity). With your algorithm, please provide the following:
+	      \begin{itemize}
+		      \item \emph{What}: A prose explanation of the problem and the algorithm,
+		            including a description of the input/output.
+		      \item \emph{How}: Describe how the algorithm works, including giving
+		            psuedocode for it.  Be sure to reference the pseudocode
+		            from within the prose explanation.
+		      \item \emph{How Fast}: Runtime, along with justification.  (Or, in the
+		            extreme, a proof of termination).
+		      \item \emph{Why}: Statement of the loop invariant for each loop, or
+		            recursion invariant for each recursive function.
+	      \end{itemize}
 \end{itemize}
 
 
@@ -59,52 +59,65 @@ Work in a group of size $\geq 2$.  Explain your strategy for working in a group.
 
 \begin{enumerate}
 
-      \item Use the definition of big-Theta notation to prove that $f(x)=4n-5$
-            is $\Theta(n+1)$.
-
-            \paragraph{Definition}
-            f is $\Theta(g)\ \iff\ f\ is\ O(g)\ and\ f\ is\ \Omega(g)$
-
-            i.e., $ a, b \in R \geq 0, n_{0} \in R$
-            $|\ \forall n \geq n_0$
-
-            $0 \leq a* g(n) \leq f(n) \leq b*g(n)$
-
-            \paragraph{Answer}
-            \begin{proof}
-                  let $a = 1, b = 4, and\ n_0 = 2$
-
-                  $\forall n \geq n_0, 1*n \leq 4*n - 5$
-
-                  $\forall n \geq n_0, 4*n - 5 \leq 4*n$
-
-                  $\therefore f(n)\ is\ \Theta(n)$
-
-                  $\Theta(n+1)$ is equivalent to $\Theta(n)$
-
-                  $\therefore f(n)\ is\ \Theta(n+1)$
-            \end{proof}
-
-      \item Use induction to prove that, for all $n \in \N$, the complete graph on
-            $n$ vertices (denoted by the symbol~$K_n$) has $\frac{n(n-1)}{2}$~edges.
-
-            \paragraph{Definition}
-            A complete graph is a graph in which each pair of graph vertices is connected by an edge.
-            \footnote{Definition from \href{https://mathworld.wolfram.com/CompleteGraph.html}{mathworld.wolfram}}
-
-            \paragraph{Answer}
-
-            {\bf Basis:} f(1) = $\frac{1(1-1)}{2}$
-
-
-            \todo{}
-
-      \item What is the negation of the following statement: for all integers $n
-                  \in \Z$, $n$ is prime.
-
-            \paragraph{Answer}
-            $\exists\ an\ integer\ n \in \Z\ |\ n$ is not prime.
-
+	\item Use the definition of big-Theta notation to prove that $f(x)=4n-5$
+	      is $\Theta(n+1)$.
+	      
+	      \paragraph{Definition}
+	      f is $\Theta(g)\ \iff\ f\ is\ O(g)\ and\ f\ is\ \Omega(g)$
+	      
+	      i.e., $ a, b \in R \geq 0, n_{0} \in R$
+	      $|\ \forall n \geq n_0$
+	      
+	      $0 \leq a* g(n) \leq f(n) \leq b*g(n)$
+	      
+	      \paragraph{Answer}
+	      \begin{proof}
+		      let $a = 1, b = 4, and\ n_0 = 2$
+		      
+		      $\forall n \geq n_0, 1 \cdot n \leq 4 \cdot n - 5$
+		      
+		      $\forall n \geq n_0, 4 \cdot n - 5 \leq 4 \cdot n$
+		      
+		      $\therefore f(n)\ is\ \Theta(n)$
+		      
+		      $\Theta(n+1)$ is equivalent to $\Theta(n)$
+		      
+		      $\therefore f(n)\ is\ \Theta(n+1)$
+	      \end{proof}
+	      
+	\item Use induction to prove that, for all $n \in \N$, the complete graph on
+	      $n$ vertices (denoted by the symbol~$K_n$) has $\frac{n(n-1)}{2}$~edges.
+	      
+	      % \paragraph{Definition}
+	      % A complete graph is a graph in which each pair of graph vertices is connected by an edge.
+	      % \footnote{Definition from \href{https://mathworld.wolfram.com/CompleteGraph.html}{mathworld.wolfram}}
+	      
+	      \paragraph{Answer}
+	      For every integer $k \geq 1$, the complete graph on
+	      $n$ vertices (denoted by the symbol~$K_n$) has $\frac{n(n-1)}{2}$~edges.
+	      For each new vertex added, an edge will be connected to each existing vertex.
+	      In other words, for the $n^{th}$ vertex added $n-1$ edges are added.
+	      
+	      
+		      {\bf Basis:} f(1) = $\frac{1(1-1)}{2}$
+	      $=\frac{1(0)}{2}$
+	      $=0$
+	      
+	      A graph with 1 vertex has zero edges, so this is true.
+	      
+		      {\bf Inductuve Step: }
+	      
+	      
+	      
+	      
+	      \todo{}
+	      
+	\item What is the negation of the following statement: for all integers $n
+		      \in \Z$, $n$ is prime.
+	      
+	      \paragraph{Answer}
+	      $\exists\ an\ integer\ n \in \Z\ |\ n$ is not prime.
+	      
 \end{enumerate}
 
 
@@ -115,18 +128,18 @@ Let $A$ be an array of $n$ comparable objects.  We do not know if $A$ is sorted
 or not.
 
 \begin{enumerate}
-      \item To answer the question \emph{is item $x$ in the $A$?}, should we
-            sort the array first?  Why or why not?
-
-            \paragraph{Answer}
-            \todo{}
-
-      \item Suppose we have $k$ elements that we want to find in $A$. Does this
-            change your answer? Why or why~not?
-
-            \paragraph{Answer}
-            \todo{}
-
+	\item To answer the question \emph{is item $x$ in the $A$?}, should we
+	      sort the array first?  Why or why not?
+	      
+	      \paragraph{Answer}
+	      \todo{}
+	      
+	\item Suppose we have $k$ elements that we want to find in $A$. Does this
+	      change your answer? Why or why~not?
+	      
+	      \paragraph{Answer}
+	      \todo{}
+	      
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -134,9 +147,9 @@ or not.
 \nextprob{Recurrence Relations}
 Consider the function $T \colon \N \to \N$ defined by
 $$T(n) = \begin{cases}
-            1        & n=1  \\
-            T(n-1)+1 & n>1.
-      \end{cases}
+		1        & n=1  \\
+		T(n-1)+1 & n>1.
+	\end{cases}
 $$
 What is the closed form and asymptotic form of this recursion?  For the
 closed form, use induction to prove that it is correct.  For the asymptotic
@@ -155,16 +168,16 @@ relations? (Show work for partial credit, but full justification is not required
 on this question).
 Let $T \colon \N \to N$ be defined by $T(1)=1$ and, for $n>1$,
 \begin{enumerate}
-      \item $T(n) = 16 T(n/4) + n$
-            \paragraph{Answer} \todo{}
-      \item $T(n) = 2 T(n/2) + n \log{n}$
-            \paragraph{Answer} \todo{}
-      \item $T(n) = 6 T(n/3) + n^2 \log{n}$
-            \paragraph{Answer} \todo{}
-      \item $T(n) = 4 T(n/2) + n^2$
-            \paragraph{Answer} \todo{}
-      \item $T(n) = 9 T(n/3) + n$
-            \paragraph{Answer} \todo{}
+	\item $T(n) = 16 T(n/4) + n$
+	      \paragraph{Answer} \todo{}
+	\item $T(n) = 2 T(n/2) + n \log{n}$
+	      \paragraph{Answer} \todo{}
+	\item $T(n) = 6 T(n/3) + n^2 \log{n}$
+	      \paragraph{Answer} \todo{}
+	\item $T(n) = 4 T(n/2) + n^2$
+	      \paragraph{Answer} \todo{}
+	\item $T(n) = 9 T(n/3) + n$
+	      \paragraph{Answer} \todo{}
 \end{enumerate}
 
 
@@ -173,6 +186,19 @@ Let $T \colon \N \to N$ be defined by $T(1)=1$ and, for $n>1$,
 \nextprob{Pancakes}
 
 Chapter 1, Problem 9, parts (a) and (b).
+
+Suppose you are given a stack of n pancakes of different sizes. You want to
+sort the pancakes so that smaller pancakes are on top of larger pancakes.
+The only operation you can perform is a flip—insert a spatula under the
+top k pancakes, for some integer k between 1 and n, and flip them all over.
+
+(a) Describe an algorithm to sort an arbitrary stack of n pancakes using
+O(n) flips. Exactly how many flips does your algorithm perform in the
+worst case?15 [Hint: This problem has nothing to do with the Tower of
+Hanoi.]
+
+(b) For every positive integer n, describe a stack of n pancakes that requires
+Ω(n) flips to sort.
 
 \paragraph{Answer, Part (a)}
 
