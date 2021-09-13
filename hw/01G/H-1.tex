@@ -100,24 +100,27 @@ Work in a group of size $\geq 2$.  Explain your strategy for working in a group.
 	      In other words, for the $n^{th}$ vertex added $n-1$ edges are added. $\frac{n(n-1)}{2}$
 	      can be rewritten as $\sum^{n-1}_{k=0} k$
 
-	      {\bf Basis:} f(1) = $\frac{1(1-1)}{2}$
+	      {\bf Basis:} $f(1)$ = $\frac{1 (1-1)}{2}$
 	      $=\frac{1(0)}{2}$
 	      $=0$
 
 	      A graph with 1 vertex has zero edges, so this is true.
 
-          {\bf Inductuve Step: } let $k \in \mathbb{Z}\ \|\ k_{0} = 1$ suppose that f(k) is true,
-          we will show that f(k+1) is also true.
+          {\bf Inductuve Step: } let $k \in \mathbb{Z}\ \|\ k_{0} = 1$ suppose that f (k) is true,
+          we will show that f (k+1) is also true.
 
-          $$(\sum^{(k+1)-1}_{j=0} j) = (\sum^{(k-1}_{j=0} j) + k$$
-          $$= \frac{k(k-1)}{2} + (k)$$
-          $$= \frac{k(k-1)}{2} + \frac{2(k)}{2} $$
-          $$= \frac{k^2 -k + 2k}{2}$$
-          $$= \frac{k^2 + k}{2}$$
+          \[ \sum^{(k+1)-1}_{j=0} j = ( \sum^{k-1}_{j=0} j ) + k\]
+          \[= \frac{k(k-1)}{2} + (k)\]
+          \[= \frac{k(k-1)}{2} + \frac{2(k)}{2}\]
+          \[= \frac{k^2 -k + 2k}{2}\]
+          \[= \frac{k^2 + k}{2} \]
 
           The other side of the equation is
 
-          $$\frac{(k+1)((k+1)-1)}{2} = \frac{k^2 +k}{2}$$
+          \[
+              \frac{(k+1)((k+1)-1)}{2} = \frac{k^2 +k}{2}
+
+          \]
 
           $\therefore f(k+1)$ is true
 
@@ -158,11 +161,11 @@ or not.
 \collab{\todo{}}
 \nextprob{Recurrence Relations}
 Consider the function $T \colon \N \to \N$ defined by
-$$T(n) = \begin{cases}
+\[T (n) = \begin{cases}
 		1        & n=1  \\
 		T(n-1)+1 & n>1.
 	\end{cases}
-$$
+\]
 What is the closed form and asymptotic form of this recursion?  For the
 closed form, use induction to prove that it is correct.  For the asymptotic
 form, use the definition of big-Theta to justify.
@@ -205,12 +208,12 @@ The only operation you can perform is a flip—insert a spatula under the
 top k pancakes, for some integer k between 1 and n, and flip them all over.
 
 (a) Describe an algorithm to sort an arbitrary stack of n pancakes using
-O(n) flips. Exactly how many flips does your algorithm perform in the
+O (n) flips. Exactly how many flips does your algorithm perform in the
 worst case?15 [Hint: This problem has nothing to do with the Tower of
 Hanoi.]
 
 (b) For every positive integer n, describe a stack of n pancakes that requires
-Ω(n) flips to sort.
+Ω (n) flips to sort.
 
 \paragraph{Answer, Part (a)}
 
