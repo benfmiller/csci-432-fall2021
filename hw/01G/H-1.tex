@@ -51,7 +51,9 @@ General homework expectations:
 Work in a group of size $\geq 2$.  Explain your strategy for working in a group.
 
 \paragraph{Answer}
-\todo{}
+
+Our strategy for working together was a fairly standard one which quite a lot of groups will use, divide and conquer. Each of us chose a portion of the problems which we were to complete individually, then we would regroup to double check our answers, and finally after confirming our work was correct we would then integrate everything into one file.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \collab{\todo{}}
@@ -151,7 +153,7 @@ or not.
 	      \paragraph{Answer}
 
 To find if item x is in A we simply need to iterate through the array and do not need to sort it as long as the array is relatively small
-this will produce the answer in constant time $O(n)$ which in a small array will be as fast or faster depending on how long it takes to sort the array, if the array
+this will produce the answer in linear time $O(n)$ which in a small array will be faster depending on how long it takes to sort the array, if the array
 is very large it may be a good idea to sort as after sorting the search will go faster as the array can be sorted into sections where the value could exist and
 could drop the time necessary to search the whole list
 
@@ -161,7 +163,7 @@ could drop the time necessary to search the whole list
 	      \paragraph{Answer}
 
 We should definetely sort the array if we want to find more than a single number, such as finding all copies of a number in the array,
-if the array is sorted first once we search it will become $O(\log(n))$ time instead of $O(n)$ time which will save large amounts of time recursively
+if the array is sorted first, when we search it will become $O(\log(n))$ time instead of $O(n)$ time which will save large amounts of time recursively
 checking each value in the array
 
 \end{enumerate}
@@ -227,15 +229,25 @@ on this question).
 Let $T \colon \N \to N$ be defined by $T(1)=1$ and, for $n>1$,
 \begin{enumerate}
     \item $T(n) = 16 T(n/4) + n$
-        \paragraph{Answer} {$a=16,b=4, \log4(16)=2,n^{\log_b(a)} = n^2,f (n)=n,epsilon=1, case 1, thus 16T(n/4) + n =Theta(n^2)$}
+        \paragraph{Answer} {$a=16,b=4, \log4(16)=2,n^{\log_b(a)} = n^2,f (n)=n\\
+        case 1, \epsilon=1$  \\
+        $\therefore 16T(n/4) + n =\Theta(n^2)$}
     \item $T(n) = 2 T(n/2) + n \log{n}$
-        \paragraph{Answer} {$a=2,b=2, \log_2(2)=1,n^{\log_b(a)}=n,f(n)=n, case 2, thus 2 T(n/2) + n = Theta(nlog(n))$}
+        \paragraph{Answer} {$a=2,b=2, \log_2(2)=1,n^{\log_b(a)}=n,f(n)=n$\\
+        case 2 \\
+        $\therefore 2 T(n/2) + n = \Theta(nlog(n))$}
     \item $T(n) = 6 T(n/3) + n^2 \log{n}$
-        \paragraph{Answer} {$a=6,b=3,\log3(6)=\log(6)/\log(3),n^(\log(6)/\log(3)),f(n)=n^2,epsilon=1/3, case 3, c=1  n0=1,  thus 6 T(n/3) + n^2 = Theta(n^2) $}
+        \paragraph{Answer} {$a=6,b=3,\log3(6)=\log(6)/\log(3),n^(\log(6)/\log(3)),f(n)=n^2$ \\
+        case 3, $\epsilon=1/3, c=1,  n_{0}=1$ \\
+        $\therefore 6 T(n/3) + n^2 = \Theta(n^2) $}
     \item $T(n) = 4 T(n/2) + n^2$
-        \paragraph{Answer} {$a=4,b=2,\log2(4)=2,n ^ \logb(a) =n^2,f(n)=n^2,case 2, thus 4 T(n/2) + n^2 = Theta(n^2\log(n))$}
+        \paragraph{Answer} {$a=4,b=2,\log2(4)=2,n ^ \logb(a) =n^2,f(n)=n^2$ \\
+        case 2 \\
+        $\therefore 4 T(n/2) + n^2 = \Theta(n^2\log(n))$}
     \item $T(n) = 9 T(n/3) + n$
-        \paragraph{Answer} {$a=9,b=3,\log3(9)=2,n ^  \logb(a) = n^2, f(n) = n, case 1, epsilon=1, thus  9 T(n/3) + n = Theta(n^2)$}
+        \paragraph{Answer} {$a=9,b=3,\log3(9)=2,n ^  \logb(a) = n^2, f(n) = n$ \\
+        case 1, $\epsilon=1$ \\
+        $\therefore 9 T(n/3) + n = \Theta(n^2)$}
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -319,9 +331,6 @@ also give $\Omega(n)$ flips.
 Chapter 1, Problem 37.  For this problem, please provide a full proof of
 correctness (i.e., provide a proof for the recursion invariant).
 
-\paragraph{Answer}
-asdf
-
 \begin{algorithm} \caption{\textsc{Full Subtree} ($Tree$)}\label{alg:seb}
     {\bf Input:} Tree\\
     {\bf Output:} Largest complete Subtree
@@ -334,7 +343,7 @@ asdf
 
 \begin{algorithm} \caption{\textsc{ListTraverse} ($Tree, validlist$)}\label{alg:seb}
     \begin{algorithmic}[1]
-        \State$calculate(validlist)$
+        \State$calculate(validlist)$ // checks which nodes are related by cross referencing the tree with the list, then calculates which subtree is largest
     \end{algorithmic}
 \end{algorithm}
 
@@ -347,7 +356,7 @@ asdf
 
         \State$LeftCheck(left\_node)$ //check if a valid left node
         \State$RightCheck(right\_node)$ //check if a valid right node
-        \If{($RightCheck(right\_node) and LeftCheck(left\_node)=true)$}
+        \If{($RightCheck(right\_node)$ and $LeftCheck(left\_node)=true)$}
             \State$addpair()$ //add valid node to vaild list
             \State$TreeLoopLeft(Tree,left\_node,right\_node)$ //recursively
             \Else{}
@@ -357,5 +366,10 @@ asdf
     \end{algorithmic}
 \end{algorithm}
 
+{ \bf proof of correctness:}
 
-\end{document}
+{\bf initialization: } The algorithm finds the largest subtree given the node list. Since there is no nodes added, returns null
+
+{\bf  maintenance:} in the middle with k nodes, list will be $(node(1), node(2) \dots node(k),node(k+1))$ since this will simply be checked by the ListTraverse function the amount of nodes doesn't matter and it will function no matter the number as the function simply checks the tree to see if the node is valid
+
+{\bf termination: } given the algorithm will run until no nodes are left unchecked it will terminate as long as infinite nodes are not provided. Thus the algorithm is correct
