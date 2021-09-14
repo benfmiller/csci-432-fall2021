@@ -5,8 +5,8 @@
 %% UPDATE these variables:
 \renewcommand{\hwnum}{1}
 \title{Advanced Algorithms, Homework \hwnum}
-\author{Ben Miller}
-\collab{Devan Eastman-Pittam, Ben Miller}
+\author{Devan Eastman-Pittam, Ben Miller}
+\collab{}
 \date{due: 13 September 2021}
 
 \begin{document}
@@ -45,7 +45,7 @@ General homework expectations:
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{N/A}
+\collab{Devan}
 \nextprob{Groups}
 
 Work in a group of size $\geq 2$.  Explain your strategy for working in a group.
@@ -56,7 +56,7 @@ Our strategy for working together was a fairly standard one which quite a lot of
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{\todo{}}
+\collab{Ben}
 \nextprob{More Basics}
 
 \begin{enumerate}
@@ -141,7 +141,7 @@ Our strategy for working together was a fairly standard one which quite a lot of
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{\todo{}}
+\collab{Devan}
 \nextprob{Sorting before Searching?}
 Let $A$ be an array of $n$ comparable objects.  We do not know if $A$ is sorted
 or not.
@@ -169,7 +169,7 @@ checking each value in the array
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{\todo{}}
+\collab{Ben}
 \nextprob{Recurrence Relations}
 Consider the function $T \colon \N \to \N$ defined by
 \[T (n) = \begin{cases}
@@ -220,7 +220,7 @@ $\therefore T(n)\ is\ \Theta(n)$
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{\todo{}}
+\collab{Devan}
 \nextprob{More Recurrence Relations}
 
 What is the asymptotic form of the following recurrence
@@ -251,7 +251,7 @@ Let $T \colon \N \to N$ be defined by $T(1)=1$ and, for $n>1$,
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{\todo{}}
+\collab{Ben}
 \nextprob{Pancakes}
 
 Chapter 1, Problem 9, parts (a) and (b).
@@ -325,7 +325,7 @@ the top and bottom, 2 flips could be required for each pancake except for the la
 also give $\Omega(n)$ flips.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{\todo{}}
+\collab{Devan and Ben}
 \nextprob{Largest Complete Subtree}
 
 Chapter 1, Problem 37.  For this problem, please provide a full proof of
@@ -335,8 +335,8 @@ correctness (i.e., provide a proof for the recursion invariant).
     {\bf Input:} Tree\\
     {\bf Output:} Largest complete Subtree
     \begin{algorithmic}[1]
-		\State$int=0$
-		\State$valid list=[]$
+		\State$global\ int=0$
+		\State$global\ valid\_list=[]$
         \State$TreeLoopLeft(Tree, left\_node, right\_node)$
     \end{algorithmic}
 \end{algorithm}
@@ -357,7 +357,7 @@ correctness (i.e., provide a proof for the recursion invariant).
         \State$LeftCheck(left\_node)$ //check if a valid left node
         \State$RightCheck(right\_node)$ //check if a valid right node
         \If{($RightCheck(right\_node)$ and $LeftCheck(left\_node)=true)$}
-            \State$addpair()$ //add valid node to vaild list
+        \State$addpair(TreeNode, validlist)$ //add valid node to vaild list (validlist = validlist + [TreeNode])
             \State$TreeLoopLeft(Tree,left\_node,right\_node)$ //recursively
             \Else{}
             \State$TraverseRight()$ // move up tree and to the right node to check for more valid pairs or if on origin 							       //node move to right side of tree
@@ -373,3 +373,5 @@ correctness (i.e., provide a proof for the recursion invariant).
 {\bf  maintenance:} in the middle with k nodes, list will be $(node(1), node(2) \dots node(k),node(k+1))$ since this will simply be checked by the ListTraverse function the amount of nodes doesn't matter and it will function no matter the number as the function simply checks the tree to see if the node is valid
 
 {\bf termination: } given the algorithm will run until no nodes are left unchecked it will terminate as long as infinite nodes are not provided. Thus the algorithm is correct
+
+\end{document}
