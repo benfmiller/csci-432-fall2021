@@ -15,4 +15,4 @@ pdf:
 	${LATEX} -pdf
 
 pdf-watcher:
-	${LATEX} -interaction=nonstopmode -pvc -pdf
+	${LATEX} -interaction=nonstopmode -f -pvc -pdf
