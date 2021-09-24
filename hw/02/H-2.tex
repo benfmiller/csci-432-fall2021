@@ -4,9 +4,9 @@
 %% UPDATE these variables:
 \renewcommand{\hwnum}{1}
 \title{Advanced Algorithms, Homework \hwnum}
-\author{\todo{Your Name Here}}
+\author{Ben Miller}
 \collab{\todo{list your collaborators here}}
-\date{due: 13 September 2021}
+\date{due: 29 September 2021}
 
 \begin{document}
 
@@ -31,15 +31,66 @@ General homework expectations:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \collab{\todo{}}
-\nextprob{Groups}
+\nextprob{Chapter 2, Problem 4}
 
-Chapter 2, Problem 4. For each of the recursive definitions, give the recurrence
+For each of the recursive definitions, give the recurrence
 relation and state the recursion invariant.  For Part (a), prove that your
 recursion invariant holds.  For Part (b), prove that your recursion terminates
 using a decrementing function.
+
+
+{\bf  (a)} Let $A[1.. m]$ and $B[1.. n]$ be two arbitrary arrays. A common subsequence
+of A and B is both a subsequence of A and a subsequence of B. Give
+a simple recursive definition for the function $lcs(A, B)$, which gives the
+length of the longest common subsequence of A and B.
 
 \paragraph{Answer}
 
 \todo{}
 
+{\bf (b)} Let $A[1.. m]$ and $B[1.. n]$ be two arbitrary arrays. A common super-
+sequence of A and B is another sequence that contains both A and B
+as subsequences. Give a simple recursive definition for the function
+$scs(A, B)$, which gives the length of the shortest common supersequence
+of A and B.
+
+\paragraph{Answer}
+
+\todo{}
+
+{\bf (c)} Call a sequence $X[1.. n]$ of numbers bitonic if there is an index i with
+1 < i < n, such that the prefix $X[1.. i]$ is increasing and the suffix
+$X[i .. n]$ is decreasing. Give a simple recursive definition for the function
+$lbs(A)$, which gives the length of the longest bitonic subsequence of an
+arbitrary array A of integers.
+
+\paragraph{Answer}
+
+\todo{}
+
+{\bf (d)} Call a sequence $X[1.. n]$ oscillating if $X[i] < X[i + 1]$ for all even i, and
+$X[i] > X[i + 1]$ for all odd i. Give a simple recursive definition for
+the function $los(A)$, which gives the length of the longest oscillating
+subsequence of an arbitrary array A of integers.
+
+\paragraph{Answer}
+
+\todo{}
+
+{\bf (e)} Give a simple recursive definition for the function $sos(A)$, which gives
+the length of the shortest oscillating supersequence of an arbitrary array
+A of integers.
+
+\paragraph{Answer}
+
+\todo{}
+
+{\bf (f)} Call a sequence $X[1.. n]$ convex if $2 · X[i] < X[i − 1] + X[i + 1]$ for all i.
+Give a simple recursive definition for the function $lxs(A)$, which gives
+the length of the longest convex subsequence of an arbitrary array A of
+integers
+
+\paragraph{Answer}
+
+\todo{}
 \end{document}
