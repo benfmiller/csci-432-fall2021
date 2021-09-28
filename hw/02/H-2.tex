@@ -30,8 +30,8 @@ General homework expectations:
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{\todo{}}
-\nextprob{Chapter 2, Problem 4}
+\collab{}
+\nextprob{Chapter 2, Problem 4, (a)}
 
 For each of the recursive definitions, give the recurrence
 relation and state the recursion invariant.  For Part (a), prove that your
@@ -48,6 +48,11 @@ length of the longest common subsequence of A and B.
 
 \todo{}
 
+\nextprob{Chapter 2, Problem 4, (b)}
+
+For Part (b), prove that your recursion terminates
+using a decrementing function.
+
 {\bf (b)} Let $A[1.. m]$ and $B[1.. n]$ be two arbitrary arrays. A common super-
 sequence of A and B is another sequence that contains both A and B
 as subsequences. Give a simple recursive definition for the function
@@ -57,6 +62,8 @@ of A and B.
 \paragraph{Answer}
 
 \todo{}
+
+\nextprob{Chapter 2, Problem 4, (c)}
 
 {\bf (c)} Call a sequence $X[1.. n]$ of numbers bitonic if there is an index i with
 1 < i < n, such that the prefix $X[1.. i]$ is increasing and the suffix
@@ -68,6 +75,8 @@ arbitrary array A of integers.
 
 \todo{}
 
+\nextprob{Chapter 2, Problem 4, (d)}
+
 {\bf (d)} Call a sequence $X[1.. n]$ oscillating if $X[i] < X[i + 1]$ for all even i, and
 $X[i] > X[i + 1]$ for all odd i. Give a simple recursive definition for
 the function $los(A)$, which gives the length of the longest oscillating
@@ -75,7 +84,60 @@ subsequence of an arbitrary array A of integers.
 
 \paragraph{Answer}
 
+We will calculate this like we did the first way for longest increasing subsequence first, but we'll add a
+flag to tell if it's increasing or decreasing (even or odd)
+The initial call to the recursive algorithm gives even as false to account for the sentinel value
+
+\begin{algorithm} \caption{\textsc{LongestOscillating} ($A[1..n]$)}\label{alg:seb}
+    {\bf Input:} A sequence\\
+    {\bf Output:} The length o the longest oscillating subsequence
+    \begin{algorithmic}[1]
+        \State$A[0] \gets - \infty$
+        \State$return\ LongestOscillatingRecursive(0, 1, false) -1$
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} \caption{\textsc{LongestOscillatingRecursive} (i, j, even)}\label{alg:seb}
+    {\bf Input:} indexes i and j, and boolean if even\\
+    {\bf Output:} length of Longest Oscillating Subsequence
+    \begin{algorithmic}[1]
+        \If{$j > n$}
+            \State$return\ 0$
+        \ElsIf{$even = true$}
+            \If{$A[i] \geq A[j]$}
+                \State$return\ LongestOscillatingRecursive(i, j+1, even)$
+            \EndIf{}
+        \ElsIf{$even = false$}
+            \If{$A[i] \leq A[j]$}
+                \State$return\ LongestOscillatingRecursive(i, j+1, even)$
+            \EndIf{}
+        \Else{}
+
+        \State$skip \gets LongestOscillatingRecursive(i, j+1, even)$
+        \State$take \gets LongestOscillatingRecursive(i, j+1, not even) +1$
+
+        \State$return\ max\{skip, take\}$
+        \EndIf{}
+    \end{algorithmic}
+\end{algorithm}
+
+\footnote{With help from the textbook}
+
+% if j > n
+% return 0
+% else if A[i] ≥ A[j]
+% return LISbigger(i, j + 1)
+% else
+% skip ← LISbigger(i, j + 1)
+% take← LISbigger(j, j + 1) + 1
+% return max{skip,take}
+
+
+
+
 \todo{}
+
+\nextprob{Chapter 2, Problem 4, (e)}
 
 {\bf (e)} Give a simple recursive definition for the function $sos(A)$, which gives
 the length of the shortest oscillating supersequence of an arbitrary array
@@ -85,7 +147,9 @@ A of integers.
 
 \todo{}
 
-{\bf (f)} Call a sequence $X[1.. n]$ convex if $2 · X[i] < X[i − 1] + X[i + 1]$ for all i.
+\nextprob{Chapter 2, Problem 4, (f)}
+
+{\bf (f)} Call a sequence $X[1.. n]$ convex if $2 \cdot X[i] < X[i-1] + X[i+1]$ for all i.
 Give a simple recursive definition for the function $lxs(A)$, which gives
 the length of the longest convex subsequence of an arbitrary array A of
 integers
