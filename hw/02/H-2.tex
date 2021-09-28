@@ -69,6 +69,32 @@ of A and B.
 
 \paragraph{Answer}
 
+\begin{algorithm} \caption{\textsc{scs} ($A[1..n], B[1..n]$)}\label{alg:seb}
+    {\bf Input:} two sequences\\
+    {\bf Output:} The length of the shortest supersequence
+    \begin{algorithmic}[1]
+        \State$A[0] \gets \infty$
+        \State$return\ ShortestSuperSequenceRecursive(1, 1) -1$
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} \caption{\textsc{ShortestSuperSequenceRecursive} (i, j)}\label{alg:seb}
+    {\bf Input:} indexes i and j\\
+    {\bf Output:} length of shortest supersequence
+    \begin{algorithmic}[1]
+        \If{$i > len(A)$}
+            \State$return\ len(B) - j$
+        \ElsIf{$j > len(B)$}
+            \State$return\ len(A) - i$
+        \ElsIf{$A[i] = B[j]$}
+            \State$return\ ShortestSuperSequenceRecursive(i+1, j+1) +1$
+        \EndIf{}
+        \State$takeA \gets ShortestSuperSequenceRecursive(i+1, j) +1$
+        \State$takeB \gets ShortestSuperSequenceRecursive(i, j+1) +1$
+        \State$return\ max\{takeA, takeB\}$
+    \end{algorithmic}
+\end{algorithm}
+
 \todo{}
 
 % --------------------------------------------------------------------------------------------
