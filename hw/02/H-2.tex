@@ -50,6 +50,9 @@ length of the longest common subsequence of A and B.
 
 \nextprob{Chapter 2, Problem 4, (b)}
 
+For each of the recursive definitions, give the recurrence
+relation and state the recursion invariant.
+
 For Part (b), prove that your recursion terminates
 using a decrementing function.
 
@@ -65,6 +68,9 @@ of A and B.
 
 \nextprob{Chapter 2, Problem 4, (c)}
 
+For each of the recursive definitions, give the recurrence
+relation and state the recursion invariant.
+
 {\bf (c)} Call a sequence $X[1.. n]$ of numbers bitonic if there is an index i with
 1 < i < n, such that the prefix $X[1.. i]$ is increasing and the suffix
 $X[i .. n]$ is decreasing. Give a simple recursive definition for the function
@@ -77,6 +83,9 @@ arbitrary array A of integers.
 
 \nextprob{Chapter 2, Problem 4, (d)}
 
+For each of the recursive definitions, give the recurrence
+relation and state the recursion invariant.
+
 {\bf (d)} Call a sequence $X[1.. n]$ oscillating if $X[i] < X[i + 1]$ for all even i, and
 $X[i] > X[i + 1]$ for all odd i. Give a simple recursive definition for
 the function $los(A)$, which gives the length of the longest oscillating
@@ -84,7 +93,7 @@ subsequence of an arbitrary array A of integers.
 
 \paragraph{Answer}
 
-We will calculate this like we did the first way for longest increasing subsequence first, but we'll add a
+We will calculate this like we did the first way for longest increasing subsequence, but we'll add a
 flag to tell if it's increasing or decreasing (even or odd)
 The initial call to the recursive algorithm gives even as false to account for the sentinel value
 
@@ -139,6 +148,9 @@ The initial call to the recursive algorithm gives even as false to account for t
 
 \nextprob{Chapter 2, Problem 4, (e)}
 
+For each of the recursive definitions, give the recurrence
+relation and state the recursion invariant.
+
 {\bf (e)} Give a simple recursive definition for the function $sos(A)$, which gives
 the length of the shortest oscillating supersequence of an arbitrary array
 A of integers.
@@ -149,6 +161,9 @@ A of integers.
 
 \nextprob{Chapter 2, Problem 4, (f)}
 
+For each of the recursive definitions, give the recurrence
+relation and state the recursion invariant.
+
 {\bf (f)} Call a sequence $X[1.. n]$ convex if $2 \cdot X[i] < X[i-1] + X[i+1]$ for all i.
 Give a simple recursive definition for the function $lxs(A)$, which gives
 the length of the longest convex subsequence of an arbitrary array A of
@@ -156,5 +171,39 @@ integers
 
 \paragraph{Answer}
 
+For this one, we'll put $\infty$ then $-\infty$ on both sides of the array, then we'll check to see
+if the next element is equal to t times the current one - the previous one. We'll just have to
+remember the current element and the previous element.
+
+\begin{algorithm} \caption{\textsc{LongestOscillating} ($A[1..n]$)}\label{alg:seb}
+    {\bf Input:} A sequence\\
+    {\bf Output:} The length o the longest oscillating subsequence
+    \begin{algorithmic}[1]
+        \State$A[0] \gets \infty$
+        \State$A[n+1] \gets \infty$
+        \State$positiveMax = LongestOscillatingRecursive(0, 0, 1) -2$
+        \State$A[0] \gets -\infty$
+        \State$A[n+1] \gets -\infty$
+        \State$negativeMax = LongestOscillatingRecursive(0, 0, 1) -2$
+        \State$return\ max\{positiveMax, negativeMax\}$
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} \caption{\textsc{LongestConvexRecursive} (i, j, k)}\label{alg:seb}
+    {\bf Input:} indexes i, j, and k\\
+    {\bf Output:} length of Longest Convex Subsequence
+    \begin{algorithmic}[1]
+        \If{$k > n$}
+            \State$return\ 0$
+            \ElsIf{$2 \cdot A[j] \geq A[j] + A[k]$}
+            \State$return\ LongestConvexRecursive(i, j, k +1)$
+        \EndIf{}
+        \Else{}
+            \State$skip \gets LongestConvexRecursive(i, j, k+1)$
+            \State$take \gets LongestConvexRecursive(j, k, k+1) +1$
+        \State$return\ max\{skip, take\}$
+        \EndIf{}
+    \end{algorithmic}
+\end{algorithm}
 \todo{}
 \end{document}
