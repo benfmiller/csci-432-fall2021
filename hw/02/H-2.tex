@@ -31,6 +31,9 @@ General homework expectations:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \collab{}
+
+% --------------------------------------------------------------------------------------------
+
 \nextprob{Chapter 2, Problem 4, (a)}
 
 For each of the recursive definitions, give the recurrence
@@ -47,6 +50,8 @@ length of the longest common subsequence of A and B.
 \paragraph{Answer}
 
 \todo{}
+
+% --------------------------------------------------------------------------------------------
 
 \nextprob{Chapter 2, Problem 4, (b)}
 
@@ -66,20 +71,57 @@ of A and B.
 
 \todo{}
 
+% --------------------------------------------------------------------------------------------
+
 \nextprob{Chapter 2, Problem 4, (c)}
 
 For each of the recursive definitions, give the recurrence
 relation and state the recursion invariant.
 
 {\bf (c)} Call a sequence $X[1.. n]$ of numbers bitonic if there is an index i with
-1 < i < n, such that the prefix $X[1.. i]$ is increasing and the suffix
+$1 < i < n$, such that the prefix $X[1.. i]$ is increasing and the suffix
 $X[i .. n]$ is decreasing. Give a simple recursive definition for the function
 $lbs(A)$, which gives the length of the longest bitonic subsequence of an
 arbitrary array A of integers.
 
 \paragraph{Answer}
 
+\begin{algorithm} \caption{\textsc{lbs} ($A[1..n]$)}\label{alg:seb}
+    {\bf Input:} A sequence\\
+    {\bf Output:} The length of the longest bitonic subsequence
+    \begin{algorithmic}[1]
+        \State$A[0] \gets \infty$
+        \State$positiveMax = LongestOscillatingRecursive(0, 1, true) -1$
+        \State$return\ max\{positiveMax, negativeMax\}$
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} \caption{\textsc{LongestConvexRecursive} (i, j, increasing)}\label{alg:seb}
+    {\bf Input:} indexes i and j, and increasing boolean\\
+    {\bf Output:} length of Longest bitonic Subsequence
+    \begin{algorithmic}[1]
+        \If{$j > n$}
+            \State$return\ 0$
+        \ElsIf{$increasing = true$}
+            \If{$A[i] \geq A[j]$}
+                \State$return\ LongestConvexRecursive(i, j+1, increasing)$
+            \EndIf{}
+        \Else{}
+            \If{$A[i] \leq A[j]$}
+                \State$return\ LongestConvexRecursive(i, j+1, increasing)$
+            \EndIf{}
+        \EndIf{}
+        \State$skip \gets LongestConvexRecursive(i, j+1, increasing)$
+        \State$take \gets LongestConvexRecursive(j, j+1, increasing) +1$
+        \If{$increasing = true$}
+            \State$take \gets max\{take, LongestConvexRecursive(j, j+1, false) +1\}$
+        \EndIf{}
+        \State$return\ max\{skip, take\}$
+    \end{algorithmic}
+\end{algorithm}
 \todo{}
+
+% --------------------------------------------------------------------------------------------
 
 \nextprob{Chapter 2, Problem 4, (d)}
 
@@ -116,17 +158,16 @@ The initial call to the recursive algorithm gives even as false to account for t
             \If{$A[i] \geq A[j]$}
                 \State$return\ LongestOscillatingRecursive(i, j+1, even)$
             \EndIf{}
-        \ElsIf{$even = false$}
+        \Else{}
             \If{$A[i] \leq A[j]$}
                 \State$return\ LongestOscillatingRecursive(i, j+1, even)$
             \EndIf{}
-        \Else{}
+        \EndIf{}
 
         \State$skip \gets LongestOscillatingRecursive(i, j+1, even)$
         \State$take \gets LongestOscillatingRecursive(i, j+1, not even) +1$
 
         \State$return\ max\{skip, take\}$
-        \EndIf{}
     \end{algorithmic}
 \end{algorithm}
 
@@ -146,6 +187,8 @@ The initial call to the recursive algorithm gives even as false to account for t
 
 \todo{}
 
+% --------------------------------------------------------------------------------------------
+
 \nextprob{Chapter 2, Problem 4, (e)}
 
 For each of the recursive definitions, give the recurrence
@@ -158,6 +201,8 @@ A of integers.
 \paragraph{Answer}
 
 \todo{}
+
+% --------------------------------------------------------------------------------------------
 
 \nextprob{Chapter 2, Problem 4, (f)}
 
@@ -175,7 +220,7 @@ For this one, we'll put $\infty$ then $-\infty$ on both sides of the array, then
 if the next element is equal to t times the current one - the previous one. We'll just have to
 remember the current element and the previous element.
 
-\begin{algorithm} \caption{\textsc{LongestOscillating} ($A[1..n]$)}\label{alg:seb}
+\begin{algorithm} \caption{\textsc{LongestConvex} ($A[1..n]$)}\label{alg:seb}
     {\bf Input:} A sequence\\
     {\bf Output:} The length o the longest oscillating subsequence
     \begin{algorithmic}[1]
