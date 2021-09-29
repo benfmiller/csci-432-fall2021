@@ -49,6 +49,10 @@ length of the longest common subsequence of A and B.
 
 \paragraph{Answer}
 
+If the cuurent element of A and B is equal, we up the count by one, and move on.
+If they are not, we advance down B until we find an equal value and recurse. We
+take the max of that value and skipping the current value in A.
+
 \begin{algorithm} \caption{\textsc{lcs} ($A[1..n], B[1..n]$)}\label{alg:seb}
     {\bf Input:} two sequences\\
     {\bf Output:} The length of the longest common subsequence
@@ -103,6 +107,10 @@ of A and B.
 
 \paragraph{Answer}
 
+If i or j is greater than the length of the corresponding array, we return the
+length of the rest of the other array. If the current position of both arrays is
+equal, we take it. Else, we take the minimum of skipping either array.
+
 \begin{algorithm} \caption{\textsc{scs} ($A[1..n], B[1..n]$)}\label{alg:seb}
     {\bf Input:} two sequences\\
     {\bf Output:} The length of the shortest supersequence
@@ -124,7 +132,7 @@ of A and B.
         \EndIf{}
         \State$takeA \gets ShortestSuperSequenceRecursive(i+1, j) +1$
         \State$takeB \gets ShortestSuperSequenceRecursive(i, j+1) +1$
-        \State$return\ max\{takeA, takeB\}$
+        \State$return\ mim\{takeA, takeB\}$
     \end{algorithmic}
 \end{algorithm}
 
@@ -145,17 +153,20 @@ arbitrary array A of integers.
 
 \paragraph{Answer}
 
+For this one, we recurse up to three times per recursive call. If we are increasing, we try
+skiping the current value, taking it, and taking it and flipping the increasing boolean.
+If we are decreasing, we do up to two calls. Skip and take.
+
 \begin{algorithm} \caption{\textsc{lbs} ($A[1..n]$)}\label{alg:seb}
     {\bf Input:} A sequence\\
     {\bf Output:} The length of the longest bitonic subsequence
     \begin{algorithmic}[1]
-        \State$A[0] \gets \infty$
-        \State$positiveMax = LongestOscillatingRecursive(0, 1, true) -1$
-        \State$return\ max\{positiveMax, negativeMax\}$
+        \State$A[0] \gets -\infty$
+        \State$return\ LongestBitonicRecursive(0, 1, true) -1$
     \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm} \caption{\textsc{LongestConvexRecursive} (i, j, increasing)}\label{alg:seb}
+\begin{algorithm} \caption{\textsc{LongestBitonicRecursive} (i, j, increasing)}\label{alg:seb}
     {\bf Input:} indexes i and j, and increasing boolean\\
     {\bf Output:} length of Longest bitonic Subsequence
     \begin{algorithmic}[1]
@@ -163,17 +174,17 @@ arbitrary array A of integers.
             \State$return\ 0$
         \ElsIf{$increasing = true$}
             \If{$A[i] \geq A[j]$}
-                \State$return\ LongestConvexRecursive(i, j+1, increasing)$
+                \State$return\ LongestBitonicRecursive(i, j+1, increasing)$
             \EndIf{}
         \Else{}
             \If{$A[i] \leq A[j]$}
-                \State$return\ LongestConvexRecursive(i, j+1, increasing)$
+                \State$return\ LongestBitonicRecursive(i, j+1, increasing)$
             \EndIf{}
         \EndIf{}
-        \State$skip \gets LongestConvexRecursive(i, j+1, increasing)$
-        \State$take \gets LongestConvexRecursive(j, j+1, increasing) +1$
+        \State$skip \gets LongestBitonicRecursive(i, j+1, increasing)$
+        \State$take \gets LongestBitonicRecursive(j, j+1, increasing) +1$
         \If{$increasing = true$}
-            \State$take \gets max\{take, LongestConvexRecursive(j, j+1, false) +1\}$
+            \State$take \gets max\{take, LongestBitonicRecursive(j, j+1, false) +1\}$
         \EndIf{}
         \State$return\ max\{skip, take\}$
     \end{algorithmic}
@@ -247,7 +258,8 @@ A of integers.
 
 We create a new supersequence B, then we calculate the minimum and maximum values in A.
 Then we go through each element in A and see if appending it keeps B oscillating. If it
-doesn't, we append the proper min or max value first.
+doesn't, we append the proper min or max value first. We could just remember the last two
+elements in B if we wanted to save space, too
 
 \begin{algorithm} \caption{\textsc{sos} ($A[1..n]$)}\label{alg:seb}
     {\bf Input:} A sequence\\
