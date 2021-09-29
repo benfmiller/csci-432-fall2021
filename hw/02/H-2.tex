@@ -154,7 +154,16 @@ equal, we take it. Else, we take the minimum of skipping either array.
 
 {\bf Recurrence Relation: } $T(n) = 2T(n-1) + \Theta(1)$
 
-\todo{}
+{\bf Recursion Invariant:} At the end of each iteration, the length of the shortest common supersequence has already been computed for A[1..i] and B[1..j].
+
+\begin{proof}
+    That it terminates with a decrementing function.
+
+    For each iteration of the recursive function, in the worst case, either i or j increase by one. Because A and B are finite,
+    i or j will eventually reach the end of their respective array.
+
+    $D(i,j) = D(i+1,j) or D(i,j+1)$
+\end{proof}
 
 % --------------------------------------------------------------------------------------------
 
@@ -210,7 +219,7 @@ If we are decreasing, we do up to two calls. Skip and take.
 
 {\bf Recurrence Relation: } $T(n) = 3T(n-1) + \Theta(1)$
 
-\todo{}
+{\bf Recursion Invariant:} At the end of each iteration, the length of the longest bitonic subsequence has already been computed for A[1..i].
 
 % --------------------------------------------------------------------------------------------
 
@@ -264,7 +273,7 @@ The initial call to the recursive algorithm gives even as false to account for t
 
 {\bf Recurrence Relation: } $T(n) = 2T(n-1) + \Theta(1)$
 
-\todo{}
+{\bf Recursion Invariant:} At the end of each iteration, the length of the longest oscillating subsequence has already been computed for A[1..i].
 
 % --------------------------------------------------------------------------------------------
 
@@ -283,6 +292,8 @@ We create a new supersequence B, then we calculate the minimum and maximum value
 Then we go through each element in A and see if appending it keeps B oscillating. If it
 doesn't, we append the proper min or max value first. We could just remember the last two
 elements in B if we wanted to save space, too
+
+It appears that the main algorithm is on the next page.
 
 \begin{algorithm} \caption{\textsc{sos} ($A[1..n]$)}\label{alg:seb}
     {\bf Input:} A sequence\\
@@ -325,7 +336,7 @@ elements in B if we wanted to save space, too
 
 {\bf Recurrence Relation: } $T(n) = T(n-1) + \Theta(1)$
 
-\todo{}
+{\bf Recursion Invariant:} At the end of each iteration, the length of the shortest oscillating supersequence has already been computed for A[1..i].
 
 % --------------------------------------------------------------------------------------------
 
@@ -378,5 +389,5 @@ remember the current element and the previous element.
 
 {\bf Recurrence Relation: } $T(n) = 2T(n-1) + \Theta(1)$
 
-\todo{}
+{\bf Recursion Invariant:} At the end of each iteration, the length of the longest convex subsequence has already been computed for A[1..i].
 \end{document}
