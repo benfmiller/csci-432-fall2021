@@ -80,6 +80,8 @@ length of the longest common subsequence of A and B.
     \end{algorithmic}
 \end{algorithm}
 
+\footnote{The original Longest Subsequence algorithm was inspired by the textbook for all of these problems}
+
 \todo{}
 
 % --------------------------------------------------------------------------------------------
@@ -228,20 +230,6 @@ The initial call to the recursive algorithm gives even as false to account for t
     \end{algorithmic}
 \end{algorithm}
 
-\footnote{With help from the textbook}
-
-% if j > n
-% return 0
-% else if A[i] ≥ A[j]
-% return LISbigger(i, j + 1)
-% else
-% skip ← LISbigger(i, j + 1)
-% take← LISbigger(j, j + 1) + 1
-% return max{skip,take}
-
-
-
-
 \todo{}
 
 % --------------------------------------------------------------------------------------------
@@ -257,6 +245,48 @@ A of integers.
 
 \paragraph{Answer}
 
+We create a new supersequence B, then we calculate the minimum and maximum values in A.
+Then we go through each element in A and see if appending it keeps B oscillating. If it
+doesn't, we append the proper min or max value first.
+
+\begin{algorithm} \caption{\textsc{sos} ($A[1..n]$)}\label{alg:seb}
+    {\bf Input:} A sequence\\
+    {\bf Output:} The length of the shortest oscillating supersequence
+    \begin{algorithmic}[1]
+        \State$B \gets NewSequence$
+        \State$minVal \gets min(A)$
+        \State$maxVal \gets max(A)$
+        \State$return\ ShortestOscillatingSupRecursive(1) -1$
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} \caption{\textsc{ShortestOscillatingSupRecursive} (i)}\label{alg:seb}
+    {\bf Input:} indexes i and j, and boolean if even\\
+    {\bf Output:} length of Shortest Oscillating Supersequence
+    \begin{algorithmic}[1]
+        \If{$i > n$}
+            \State$return\ len(B)$
+        \Else{}
+            \If{$B[end] > B[end-1]$}
+                \If{$A[i] < B[end]$}
+                    \State$append\ A[i]\ to\ B$
+                    \State$return\ ShortestOscillatingSupRecursive(i+1)$
+                \Else{}
+                    \State$append\ minVal\ to\ B$
+                    \State$return\ ShortestOscillatingSupRecursive(i)$
+                \EndIf{}
+            \Else{}
+                \If{$A[i] > B[end]$}
+                    \State$append\ A[i]\ to\ B$
+                    \State$return\ ShortestOscillatingSupRecursive(i+1)$
+                \Else{}
+                    \State$append\ maxVal\ to\ B$
+                    \State$return\ ShortestOscillatingSupRecursive(i)$
+                \EndIf{}
+            \EndIf{}
+        \EndIf{}
+    \end{algorithmic}
+\end{algorithm}
 \todo{}
 
 % --------------------------------------------------------------------------------------------
