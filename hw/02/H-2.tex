@@ -49,9 +49,41 @@ length of the longest common subsequence of A and B.
 
 \paragraph{Answer}
 
+\begin{algorithm} \caption{\textsc{lcs} ($A[1..n], B[1..n]$)}\label{alg:seb}
+    {\bf Input:} two sequences\\
+    {\bf Output:} The length of the longest common subsequence
+    \begin{algorithmic}[1]
+        \State$return\ LongestCommonSubsequenceRecursive(1, 1)$
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} \caption{\textsc{LongestCommonSubsequenceRecursive} (i, j)}\label{alg:seb}
+    {\bf Input:} indexes i and j\\
+    {\bf Output:} length of longest common subsequence
+    \begin{algorithmic}[1]
+        \If{$i > len(A)$}
+            \State$return\ 0$
+        \ElsIf{$j > len(B)$}
+            \State$return\ 0$
+        \ElsIf{$A[i] = B[j]$}
+            \State$return\ LongestCommonSubsequenceRecursive(i+1, j+1) +1$
+        \Else{}
+            \For{$k\ from\ j\ to\ len(B)$}
+                \If{$A[i] = B[k]$}
+                    \State$skip \gets LongestCommonSubsequenceRecursive(i+1, k+1) +1$
+                    \State$Break$
+                \EndIf{}
+            \EndFor{}
+            \State$take \gets LongestCommonSubsequenceRecursive(i+1, j)$
+            \State$return\ max\{skip, take\}$
+        \EndIf{}
+    \end{algorithmic}
+\end{algorithm}
+
 \todo{}
 
 % --------------------------------------------------------------------------------------------
+
 
 \nextprob{Chapter 2, Problem 4, (b)}
 
@@ -73,8 +105,7 @@ of A and B.
     {\bf Input:} two sequences\\
     {\bf Output:} The length of the shortest supersequence
     \begin{algorithmic}[1]
-        \State$A[0] \gets \infty$
-        \State$return\ ShortestSuperSequenceRecursive(1, 1) -1$
+        \State$return\ ShortestSuperSequenceRecursive(1, 1)$
     \end{algorithmic}
 \end{algorithm}
 
