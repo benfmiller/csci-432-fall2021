@@ -84,6 +84,12 @@ take the max of that value and skipping the current value in A.
     \end{algorithmic}
 \end{algorithm}
 
+{\bf Recurrence Relation: } $T(n) = 2T(n-1) + \Theta(1)$
+
+Realistically, we would do a lot of advancing through both arrays, but oh well. This is worst case.
+
+{\bf Recursion Invariant:}
+
 \footnote{The original Longest Subsequence algorithm was inspired by the textbook for all of these problems}
 
 \todo{}
@@ -135,6 +141,8 @@ equal, we take it. Else, we take the minimum of skipping either array.
         \State$return\ mim\{takeA, takeB\}$
     \end{algorithmic}
 \end{algorithm}
+
+{\bf Recurrence Relation: } $T(n) = 2T(n-1) + \Theta(1)$
 
 \todo{}
 
@@ -189,6 +197,9 @@ If we are decreasing, we do up to two calls. Skip and take.
         \State$return\ max\{skip, take\}$
     \end{algorithmic}
 \end{algorithm}
+
+{\bf Recurrence Relation: } $T(n) = 3T(n-1) + \Theta(1)$
+
 \todo{}
 
 % --------------------------------------------------------------------------------------------
@@ -240,6 +251,8 @@ The initial call to the recursive algorithm gives even as false to account for t
         \State$return\ max\{skip, take\}$
     \end{algorithmic}
 \end{algorithm}
+
+{\bf Recurrence Relation: } $T(n) = 2T(n-1) + \Theta(1)$
 
 \todo{}
 
@@ -299,6 +312,9 @@ elements in B if we wanted to save space, too
         \EndIf{}
     \end{algorithmic}
 \end{algorithm}
+
+{\bf Recurrence Relation: } $T(n) = T(n-1) + \Theta(1)$
+
 \todo{}
 
 % --------------------------------------------------------------------------------------------
@@ -349,5 +365,8 @@ remember the current element and the previous element.
         \EndIf{}
     \end{algorithmic}
 \end{algorithm}
+
+{\bf Recurrence Relation: } $T(n) = 2T(n-1) + \Theta(1)$
+
 \todo{}
 \end{document}
