@@ -48,6 +48,7 @@ a simple recursive definition for the function $lcs(A, B)$, which gives the
 length of the longest common subsequence of A and B.
 
 \paragraph{Answer}
+\footnote{The original Longest Subsequence algorithm was inspired by the textbook for all of these problems}
 
 If the cuurent element of A and B is equal, we up the count by one, and move on.
 If they are not, we advance down B until we find an equal value and recurse. We
@@ -88,11 +89,20 @@ take the max of that value and skipping the current value in A.
 
 Realistically, we would do a lot of advancing through both arrays, but oh well. This is worst case.
 
-{\bf Recursion Invariant:}
+{\bf Recursion Invariant:} At the end of each iteration, the length of the longest common subsequence has already been computed for A[1..i] and B[1..j].
 
-\footnote{The original Longest Subsequence algorithm was inspired by the textbook for all of these problems}
+\begin{proof}
+    Assuming that the recursion invariant is true for the previous call, we will show that it holds for the current call.
 
-\todo{}
+    If one of the arrays is empty, there are no more common elements, so we contribute zero to the sum and return.
+    If the current element of each array is the same, the longest common subsequence will include that character.
+    Else, we skip in B until it matches the current element in A. We compare that to the result of skipping the current
+    element in A. This is equivalent to taking the max of skipping or taking A. The max of skipping or taking the
+    current element of A gives the longest common subsequence for A[1..i+1] and B[1..j] if A[i] and B[j] are not equal.
+
+\end{proof}
+
+
 
 % --------------------------------------------------------------------------------------------
 
