@@ -112,12 +112,41 @@ time.
 \nextprob{Greedy Algorithm}
 
 What is the loop invariant of the for loop for the \textsc{GreedySchedule}
-algorithm in Section 4.2 of the textbook?  Please atate all relevant statements
+algorithm in Section 4.2 of the textbook?  Please state all relevant statements
 (post-condition, pre-condition, loop invariant, and loop guard).  It may be
 helpful to rewrite this for loop as a while loop and work with that.  Prove that
 your loop invariant is correct.
 
+Q= the post-condition, what is true at the end (what was the loop supposed to do) \\
+P= the pre-condition, what is tru going into the loop for the first time? \\
+G= the loop guard, the condition that must be met to stay in the loop. *Hint: use while loops!!* \\
+$L_{i}$ (or sometimes just L) = what is true upon entering the loop or attempting to enter the loop for the ith time. *must use you variables* (implicit or explicit) (think what is getting us closer to Q)
+
+Initilization: P $\implies L_{1}$
+
+Maintenance: $G \wedge L_{i} \implies L_{i+1}$ (could break in the middle)
+
+End: $\neq G \wedge L \implies Q$
+
+\begin{algorithmic}[1]
+    \State$ sort F and permute S to match$
+    \State$ count ← 1$
+    \State$ X [count] ← 1$
+    \For{$i \gets 2\ to\ n$}
+        \If{$S[i] > F [X [count]]$}
+            \State$ count ← count + 1$
+            \State$ X [count] ← i$
+        \EndIf{}
+    \EndFor{}
+    \State$ return X [1 .. count]$
+\end{algorithmic}
+
 \paragraph{answer}
+
+Q= \\
+P= \\
+G= \\
+L_{i}=
 
 \todo{}
 
