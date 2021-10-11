@@ -4,7 +4,7 @@
 %% UPDATE these variables:
 \renewcommand{\hwnum}{1}
 \title{Advanced Algorithms, Homework \hwnum}
-\author{\todo{Your Name Here}}
+\author{Ben Miller}
 \collab{\todo{list your collaborators here}}
 \date{due: Wednesday, 13 October 2021}
 
@@ -46,7 +46,7 @@ This homework can be submitted as a group of size $n \geq 1$.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{\todo{}}
+\collab{}
 \nextprob{Sugar Packet Game}
 
 In Section 2.2 of the textbook, Dr.~Erickson describes a two-player game.
@@ -54,16 +54,61 @@ He states, ``It's not hard to prove that
 as long as there are tokens on the board, at least one player can legally
 move.''  Prove this statement is correct.
 
+\paragraph{answer}
+The key to this is that a player can pass if there is no legal move.
+
+The two move rules are that each player can move their sugar packet one square if the next
+square is open or they can jump over exactly one sugar packet if there is a sugar packet on
+the next square.
+
+The only situation in which a player must pass is where 2 or more opposing sugar packets are on the
+squares in front of the current sugar packet. We will call one player's sugar packets "X" and the opposing
+sugar packets "Y."
+
+\begin{proof}
+    If all X's are blocked (in the endzone or two packets in front of them), Player of X must skip that turn.
+    Player of Y can then move on the next turn. If Player of Y cannot move, that would mean that
+    either the Y's are in the endzone or they are blocked by X's.
+
+    There is only one X for each row in X's direction of travel, likewise for Y. So, at most, only
+    one row of the opposing player's direction of travel can be blocked at any particular time.
+    Only one blocking piece can be blocked at a time.
+
+    Therefore, if a player must skip a turn, the opposing player can move, which will allow the first
+    player to move on the subsequent turn.
+\end{proof}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{\todo{}}
+\collab{}
 \nextprob{Repeated pattern}
 
 Chapter 2, Problem 26.  Only one algorithm is needed.  Bonus points for a
 solution that beats $O(n^5)$ though!
 
+Describe and analyze an algorithm that finds the maximum-area rectangular
+pattern that appears more than once in a given bitmap. Specifically, given
+a two-dimensional array M [1 .. n, 1 .. n] of bits as input, your algorithm
+should output the area of the largest repeated rectangular pattern in M .
+For example, given the bitmap shown on the left in the figure below, your
+algorithm should return the integer 195, which is the area of the 15 × 13
+doggo. (Although it doesn’t happen in this example, the two copies of the
+repeated pattern might overlap.)
+
+(a) For full credit, describe an algorithm that runs in O(n 5 ) time.
+
+(b) For extra credit, describe an algorithm that runs in O(n 4 ) time.
+
+(c) For extra extra credit, describe an algorithm that runs in O(n 3 polylog n)
+time.
+
+\paragraph{answer}
+
+\todo{}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\collab{\todo{}}
+\collab{}
 \nextprob{Greedy Algorithm}
 
 What is the loop invariant of the for loop for the \textsc{GreedySchedule}
@@ -71,5 +116,9 @@ algorithm in Section 4.2 of the textbook?  Please atate all relevant statements
 (post-condition, pre-condition, loop invariant, and loop guard).  It may be
 helpful to rewrite this for loop as a while loop and work with that.  Prove that
 your loop invariant is correct.
+
+\paragraph{answer}
+
+\todo{}
 
 \end{document}
