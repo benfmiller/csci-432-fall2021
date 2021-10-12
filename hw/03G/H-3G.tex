@@ -78,11 +78,6 @@ sugar packets "Y."
     player to move on the subsequent turn.
 \end{proof}
 
-\paragraph{Answer}
-
-\todo{}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \collab{}
 \nextprob{Repeated pattern}
@@ -120,8 +115,6 @@ key to getting fast.
 
 There is another way that is very memory inefficient that I think will be even better.
 
-\paragraph{Answer}
-
 \todo{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -144,7 +137,7 @@ Maintenance: $G \wedge L_{i} \implies L_{i+1}$ (could break in the middle) \\
 End: $\neq G \wedge L \implies Q$
 
 \begin{algorithmic}[1]
-    \State$ sort F and permute S to match$
+    \State$ sort\ F\ and\ permute\ S\ to\ match$
     \State$ count \gets 1$
     \State$ X [count] \gets 1$
     \For{$i \gets 2\ to\ n$}
@@ -160,12 +153,18 @@ End: $\neq G \wedge L \implies Q$
 
 Q= X[1 .. count] contains the optimal/largest number of classes and their corresponding number.\\
 P= S[1..n] is a list of start times and F[1..n] is a corresponding list of end times, both permuted
-so they are sorted by end time.\\
-G= \\
-L_{i}=
+so they are sorted by end time. Our count is one and the first course is the first course to finish\\
+G= There are courses left in the list/count is less than length of course list\\
+L_{i}= X[1.. count] are the best courses so far.
 
-\paragraph{Answer}
+{\bf Initilization:} P $\implies L_{1}$
 
-\todo{}
+{\bf Maintenance: } If we choose the course F[i] that finishes first, we are able to take the next course immediately afterward that finishes first. Thank goodness we don't have to worry about credits for our degree here!
+
+We cannot take another course that is currently going on while we are in our current course, so we skip the ones that are currently going on. If we take any course other than the next course that ends, we will not be able to take any more courses than if we took the next course that ends.
+
+Therefore, taking the next available course gives us maxCourses(F[i]) $\geq$ maxCourses(F[i+1])
+
+{\bf End: } When $i > n$, there are no more courses left. Because we have already taken every course we could, there are no more courses to take. We process one course per loop, so we are bound to go through every course.
 
 \end{document}
