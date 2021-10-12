@@ -67,13 +67,21 @@ The assignments:
    Heritage
    day](https://www.montana.edu/news/21456/msu-sets-american-indian-heritage-day-celebration-for-sept-23-24)).
    Write a 1-2 page reflection on how the land-grant mission of MSU will impact
-   your (corrent and/or) future role in society.
+   your (current and/or) future role in society.
 7. Participate in [ShellHacks](https://shellhacks.net/) the weekend of Sept
    24-26.  Write a short report
    to summarize what you did in the hackathon. Write-up is due 3 October 2021.
 8. Attend the [CBE in-person Poster
-Session](https://www.montana.edu/news/21456/msu-sets-american-indian-heritage-day-celebration-for-sept-23-24)
+Session](https://www.montana.edu/calendar/events/39111)
 on Thursday, 7 October 2021. Write-up is due 14 October.
 9. Attend at least one talk at the [Fall Workshop on Computational
 Geometry](https://comptag.github.io/fwcg21/call.html), to be held Oct 15-16.
 Please note registration is required. Write-up due 23 October.
+10. Attend [Lucy William's Comprehensive
+    Exam](https://www.montana.edu/calendar/events/39417) on Wednesday, 6 October
+    2021. Write-up is due 13 October 2021.
+11. Meet a postdoc on Wednesday, 13 October. Location TBA.  Write a 1-page reflection on the
+experinece (due: 20 October 2021).
+12. Attend IEEE VIS practic Q&A on 14 October at 10:00.  Zoom link will be
+provided via email.  Come up with three questions for the speaker. List of questions due:
+21 October 2021.
