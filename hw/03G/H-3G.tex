@@ -96,14 +96,27 @@ algorithm should return the integer 195, which is the area of the 15 × 13
 doggo. (Although it doesn’t happen in this example, the two copies of the
 repeated pattern might overlap.)
 
-(a) For full credit, describe an algorithm that runs in O(n 5 ) time.
+(a) For full credit, describe an algorithm that runs in $O(n^{5})$ time.
 
-(b) For extra credit, describe an algorithm that runs in O(n 4 ) time.
+(b) For extra credit, describe an algorithm that runs in $O(n^{4})$ time.
 
-(c) For extra extra credit, describe an algorithm that runs in O(n 3 polylog n)
+(c) For extra extra credit, describe an algorithm that runs in $O(n^{3} polylog n)$
 time.
 
 \paragraph{answer}
+
+The method to perform this that first comes to my mind is to have four points,
+the start and end of the first pattern and the start and end of the second pattern.
+We will then loop through each section with the end then the start for both patterns
+and compare the arrays. Then, we will shift down for both patterns, comparing the new
+length against our current max. This would be a bit slow because we have to re-compare
+each length.
+
+There is a way that we could memoize this process, though, which I think will be the
+key to getting fast.
+
+There is another way that is very memory inefficient that I think will be even better.
+
 
 \todo{}
 
@@ -122,20 +135,18 @@ P= the pre-condition, what is tru going into the loop for the first time? \\
 G= the loop guard, the condition that must be met to stay in the loop. *Hint: use while loops!!* \\
 $L_{i}$ (or sometimes just L) = what is true upon entering the loop or attempting to enter the loop for the ith time. *must use you variables* (implicit or explicit) (think what is getting us closer to Q)
 
-Initilization: P $\implies L_{1}$
-
-Maintenance: $G \wedge L_{i} \implies L_{i+1}$ (could break in the middle)
-
+Initilization: P $\implies L_{1}$ \\
+Maintenance: $G \wedge L_{i} \implies L_{i+1}$ (could break in the middle) \\
 End: $\neq G \wedge L \implies Q$
 
 \begin{algorithmic}[1]
     \State$ sort F and permute S to match$
-    \State$ count ← 1$
-    \State$ X [count] ← 1$
+    \State$ count \gets 1$
+    \State$ X [count] \gets 1$
     \For{$i \gets 2\ to\ n$}
         \If{$S[i] > F [X [count]]$}
-            \State$ count ← count + 1$
-            \State$ X [count] ← i$
+            \State$ count \gets count + 1$
+            \State$ X [count] \gets i$
         \EndIf{}
     \EndFor{}
     \State$ return X [1 .. count]$
@@ -143,8 +154,9 @@ End: $\neq G \wedge L \implies Q$
 
 \paragraph{answer}
 
-Q= \\
-P= \\
+Q= X[1 .. count] contains the optimal/largest number of classes and their corresponding number.\\
+P= S[1..n] is a list of start times and F[1..n] is a corresponding list of end times, both permuted
+so they are sorted by end time.\\
 G= \\
 L_{i}=
 
