@@ -97,12 +97,20 @@ repeated pattern might overlap.)
 \paragraph{answer}
 
 I spent a little too much time trying to come up with a better implementation for this algorithm,
-so I decided to just go with this one.
+so I decided to just go with this one. It runs in $O(n^{6})$ time.
 
 We'll consider every left corner combination posible and run our rectangler method on each of them.
 Rectangler will go all the way horizontally until there's not a match anymore. Then, it will loop down vertically and find the new longest horizontal distance maxing out at the previous longest horizontal distance and so on, recording the largest rectangle with those particular corners along the way.
 
-\begin{algorithm} \caption{\textsc{LargestRepeatedPatter} (M[1..n,1..n])}\label{alg:seb}
+{\bf Runtime:} LargestRepeatedPattern calls Rectangler on every point combination except for when the points are the same, which requires $O(n^{4})$ checks. Rectangler has $\Omega(1)$ running time when the points are not equal. Within each rectangler, it never has to compare the same points more than once, and, since the rectangle and its comparison rectangle are the same size, we get $O(n^{2})$ running time when the rectangle gets large. This gives us a total running time of $O(n^{6})$.
+
+{\bf Initialization:} Largest starts out at 0.
+
+{\bf Maintenance:} every point combination is checked. In checking each point combination $p_{i}$, every possible recangle is found with that point combination and Rectangler returns the largest rectangle size. LargestRepeated Pattern compares that value to the current largest rectangle size keeping the largest one.
+
+{\bf End:} There are a finite number of point combinations and a finite number of possible rectangles with that point combination as the top left corner. When we end we have checked every possible rectangle and kept the largest.
+
+\begin{algorithm} \caption{\textsc{LargestRepeatedPattern} (M[1..n,1..n])}\label{alg:seb}
     {\bf Input:} nxn grid of booleans\\
     {\bf Output:} area of largest repeated pattern
     \begin{algorithmic}[1]
@@ -136,9 +144,6 @@ Rectangler will go all the way horizontally until there's not a match anymore. T
         \State$return\ curMax$
     \end{algorithmic}
 \end{algorithm}
-
-
-\todo{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \collab{}
