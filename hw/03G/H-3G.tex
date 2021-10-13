@@ -94,40 +94,25 @@ algorithm should return the integer 195, which is the area of the 15 × 13
 doggo. (Although it doesn’t happen in this example, the two copies of the
 repeated pattern might overlap.)
 
-(a) For full credit, describe an algorithm that runs in $O(n^{5})$ time.
-
-(b) For extra credit, describe an algorithm that runs in $O(n^{4})$ time.
-
-(c) For extra extra credit, describe an algorithm that runs in $O(n^{3} polylog n)$
-time.
-
 \paragraph{answer}
 
-The method to perform this that first comes to my mind is to have four points,
-the start and end of the first pattern and the start and end of the second pattern.
-We will then loop through each section with the end then the start for both patterns
-and compare the arrays. Then, we will shift down for both patterns, comparing the new
-length against our current max.
+I spent a little too much time trying to come up with a better implementation for this algorithm,
+so I decided to just go with this one.
 
-We'll use a set to memoize our comparisons, but we could use a 4d matrix to record checks.
-A set is amortized constant time for inserts and checks while the matrix would be constant time
-inserts and checks but would take more memory.
+We'll consider every left corner combination posible and run our rectangler method on each of them.
+Rectangler will go all the way horizontally until there's not a match anymore. Then, it will loop down vertically and find the new longest horizontal distance maxing out at the previous longest horizontal distance and so on, recording the largest rectangle with those particular corners along the way.
 
 \begin{algorithm} \caption{\textsc{LargestRepeatedPatter} (M[1..n,1..n])}\label{alg:seb}
     {\bf Input:} nxn grid of booleans\\
     {\bf Output:} area of largest repeated pattern
     \begin{algorithmic}[1]
         \State$largest \gets 0$
-        \State$SameSet \gets emptySet$
-        \State$DiffSet \gets emptySet$
-        \State$Add\ all\ (i,i,i,i)\ with\ i < n\ pairs\ to\ DiffSet$
         \For{$Acolumn \gets 1\ to\ n$}
             \For{$Bcolumn \gets Acolumn\ to\ n$}
                 \For{$A \gets 1\ to\ n$}
-                    \For{$B\gets 1\ to\ n$}
-                        \If{$BStart \neq AStart\ or\ Acolumn != Bcolumn$}
-                        \State$largest \gets max(Comparer(0, A, B, 1, Acolumn, Bcolumn), largest)$
-                            Comparer
+                    \For{$B\gets A\ to\ n$}
+                        \If{$BStart \neq AStart\ or\ Acolumn \neq Bcolumn$}
+                            \State$largest \gets max(Rectangler(A, B, Acolumn, Bcolumn), largest)$
                         \EndIf{}
                     \EndFor{}
                 \EndFor{}
@@ -137,11 +122,18 @@ inserts and checks but would take more memory.
     \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm} \caption{\textsc{Comparer} (Size, Astart, Bstart, width, Acolumn, Bcolumn)}\label{alg:seb}
-    {\bf Input:} \\
-    {\bf Output:}
+\begin{algorithm} \caption{\textsc{Rectangler} (A, B, Acolumn, Bcolumn)}\label{alg:seb}
     \begin{algorithmic}[1]
-        \State$$
+        \State$curMax \gets 0$
+        \State$lengthOut \gets distance\ until\ a\ mismatch\ is\ found$
+        \State$curMax \gets lengthOut$
+        \State$heightOut \gets 1$
+        \While{$lengthOut > 0$}
+            \State$heightOut \gets heightOut + 1$
+            \State$lengthOut \gets distance\ in\ (column + heightOut)\ until\ mismatch\ is\ found\ or\ reach\ lengthOut$
+            \State$curMax \gets max(curMax, (lengthOut * heightOut))$
+        \EndWhile{}
+        \State$return\ curMax$
     \end{algorithmic}
 \end{algorithm}
 
