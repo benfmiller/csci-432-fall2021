@@ -29,6 +29,9 @@ specific formatting requirements:
 
 The assignments:
 
+0. Suggest a misc assignment!  To earn misc credit, the suggestion must be
+    submitted in writing (an email or upload a PDF to gradescope) by Halloween,
+    31 October 2021.
 1. Attend one of the CS seminars. They are held Mondays 16:10-17:00.  Please
    join cs-announce the notification of who is speaking each week (and the WebEx
    link).  Due: before the last week of class.
