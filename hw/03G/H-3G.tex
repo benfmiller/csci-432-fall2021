@@ -107,13 +107,44 @@ The method to perform this that first comes to my mind is to have four points,
 the start and end of the first pattern and the start and end of the second pattern.
 We will then loop through each section with the end then the start for both patterns
 and compare the arrays. Then, we will shift down for both patterns, comparing the new
-length against our current max. This would be a bit slow because we have to re-compare
-each length.
+length against our current max.
 
-There is a way that we could memoize this process, though, which I think will be the
-key to getting fast.
+We'll use a set to memoize our comparisons, but we could use a 4d matrix to record checks.
+A set is amortized constant time for inserts and checks while the matrix would be constant time
+inserts and checks but would take more memory.
 
-There is another way that is very memory inefficient that I think will be even better.
+\begin{algorithm} \caption{\textsc{LargestRepeatedPatter} (M[1..n,1..n])}\label{alg:seb}
+    {\bf Input:} nxn grid of booleans\\
+    {\bf Output:} area of largest repeated pattern
+    \begin{algorithmic}[1]
+        \State$largest \gets 0$
+        \State$SameSet \gets emptySet$
+        \State$DiffSet \gets emptySet$
+        \State$Add\ all\ (i,i,i,i)\ with\ i < n\ pairs\ to\ DiffSet$
+        \For{$Acolumn \gets 1\ to\ n$}
+            \For{$Bcolumn \gets Acolumn\ to\ n$}
+                \For{$A \gets 1\ to\ n$}
+                    \For{$B\gets 1\ to\ n$}
+                        \If{$BStart \neq AStart\ or\ Acolumn != Bcolumn$}
+                        \State$largest \gets max(Comparer(0, A, B, 1, Acolumn, Bcolumn), largest)$
+                            Comparer
+                        \EndIf{}
+                    \EndFor{}
+                \EndFor{}
+            \EndFor{}
+        \EndFor{}
+        \State$return\ largest$
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} \caption{\textsc{Comparer} (Size, Astart, Bstart, width, Acolumn, Bcolumn)}\label{alg:seb}
+    {\bf Input:} \\
+    {\bf Output:}
+    \begin{algorithmic}[1]
+        \State$$
+    \end{algorithmic}
+\end{algorithm}
+
 
 \todo{}
 
