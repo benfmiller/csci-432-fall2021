@@ -3,7 +3,7 @@
 \usepackage{hyperref}
 
 %% UPDATE these variables:
-\renewcommand{\hwnum}{1}
+\renewcommand{\hwnum}{4}
 \title{Advanced Algorithms, Homework \hwnum}
 \author{Ben Miller, Devan Eastman-Pittam}
 \collab{\todo{list your collaborators here}}
@@ -64,13 +64,13 @@ to help you think about the project and start planning for it.
 
         \paragraph{Answer}
 
-Devan
+{\bf  Devan:}
 
     Strength: Analysis and Comparison
 
     Weakness: Proof writing
 
-Ben
+{\bf  Ben:}
 
     Strength: Pseudocode writing
 
@@ -81,7 +81,14 @@ Ben
         the problem that these algorithms solve.
 
         \paragraph{Answer}
-        \todo{}
+
+{\bf  \href{https://ieeexplore.ieee.org/abstract/document/5543008?casa_token=D1odCKAaZkgAAAAA:1etG4bLeVzd78znBB9EU5xlRCj7vBHUZOe2n-BKf63L2cwwu9jWJKBNUCLVlcELgTDa0tlIqcYk}{An analysis of TZSearch algorithm in JMVC}}
+
+    This paper analyses under which conditions and with what thresholds TZSearch performs the best. TZSearch is a video encoding algorithm that takes motion into account.
+
+{\bf  \href{https://link.springer.com/chapter/10.1007/978-3-642-21551-3_6}{The EM Algorithm}}
+
+This algorithm solves Maximum likelihood estimates using an iterative approach.on incomplete data problems.
 
     \item Suppose your group goes for the implementation option. Describe two
         methods that you can use to compare implementations.
@@ -161,14 +168,19 @@ alternative schedules.  However, you only need to hand in two:
     \item Choose one alternate strategy that
         works, and prove that it works.
 
+
     \paragraph{Answer}
-    \todo{}
+Choose a course x that conflicts with the fewest other courses, discard all classes that conflict with x, and recurse.
+
+Since by definition this will take the option with least conflict IE: most overall classes we know that a more optimal greedy solution does not exist. This only finds a single maximal list of courses but not all of them, thus we can have more than one equal maximal course list. If an option x exists that reduces more conflicts it would become the one with the least conflicts and would replace the current choice therefore this will always work no matter how many courses are added or removed.
 
     \item Choose one alternate strategy that does not work, and give a
         counter-example.
 
     \paragraph{Answer}
-    \todo{}
+Choose the course x that starts last, discard all classes that conflict with x, and recurse.
+
+The counterexample is that In an arbitrary schedule S if there exists a schedule in which the course x starts last. Assuming another Schedule S2 exists with all the same courses in S1 Except x which is replaced by an arbitrary course c that starts before x not violating the premise but it ends after x then the algorithm will not be maximal, since v is interchangeable with x but it is longer since both courses share the same previous courses
 
 \end{enumerate}
 
