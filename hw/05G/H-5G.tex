@@ -103,7 +103,7 @@ union-find data structure, with both ``heuristics.''
 \paragraph{Answer}
 \todo{}
 
-\collab{\todo{}}
+\collab{}
 \nextprob{Maximum and Minimum Edges in Cycles}
 
 Chapter 7, Question 1
@@ -147,6 +147,8 @@ minimum-weight edge in every cycle in G.
 
     \item Including Minimum Weight Edges.
 
+        \paragraph{Answer}
+
         We will disprove this statement by contradiction.
 
         \begin{proof}
@@ -163,13 +165,10 @@ minimum-weight edge in every cycle in G.
             the minimum spanning tree of G.
         \end{proof}
 
-        \paragraph{Answer}
-        \todo{}
-
 \end{enumerate}
 
 
-\collab{\todo{}}
+\collab{}
 \nextprob{Maximum Weight Spanning Tree}
 
 Chapter 7, Question 4, Part(a).
@@ -178,8 +177,16 @@ Describe and analyze an algorithm to compute the maximum-weight
 spanning tree of a given edge-weighted graph
 
 \paragraph{Answer}
-\todo{}
 
+This problem is akin to running a regular minimum spanning tree algorithm on
+a Graph with the inverse of all the edges. We just consider a safe edge to be
+the largest edge going away from each vertex. So, we'll do the Boruvka method;
+we'll add all the safe edges and recurse.
 
+Because this algorithm is the exact same as Boruvka's but with the safe edges inverted,
+the runtime and proof of the algorithm is the exact same. For a detailed discussion
+on analysis and proof of this algorithm, see Jeff Erickson's "Algorithms" at page 262.
+
+The running time is $O(E log V)$
 
 \end{document}
