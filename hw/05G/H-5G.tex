@@ -90,7 +90,18 @@ considered. So, that loop will terminate in $O(m)$ iterations.
 Use a decrementing function to prove that the while loop terminates.
 
 \paragraph{Answer}
-\todo{}
+
+$StrongComponents: D \rightarrow \mathbb{N}$
+
+If a vertex has no outgoing edges it is a sink. In each loop of the while loop,
+a vertex from a sink component is found and every vertex reachable in that sink
+component is removed. For each loop, $n = n - k | k >= 1$ and $m= m -j | j >= 1$
+
+In removing a sink component, a new sink component is always created until there
+are no more vertices.
+
+The statespace of StrongComponents decreases in each iteration of the while loop.
+Therefore it will terminate.
 
 \collab{}
 \nextprob{Kruskal}
