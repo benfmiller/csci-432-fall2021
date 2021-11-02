@@ -92,7 +92,7 @@ Use a decrementing function to prove that the while loop terminates.
 \paragraph{Answer}
 \todo{}
 
-\collab{\todo{}}
+\collab{}
 \nextprob{Kruskal}
 
 Walk through Kruskal's algorithm, using the graph in Figure 7.7 (left) of the
@@ -101,6 +101,27 @@ remainder $c$ through $g$ in counter-clockwise order.  You should use the
 union-find data structure, with both ``heuristics.''
 
 \paragraph{Answer}
+
+a, b, c, d, e, f, g
+
+a, a, c, d, e, f, g
+2, 1, 1, 1, 1, 1, 1
+
+a, a, c, a, e, f, g
+2, 1, 1, 1, 1, 1, 1
+
+a, a, c, a, e, g, g
+2, 1, 1, 1, 1, 1, 2
+
+a, a, b, a, e, g, g
+3, 2, 1, 1, 1, 1, 2
+
+a, a, b, a, e, g, a
+3, 2, 1, 1, 1, 1, 2
+
+a, a, b, a, d, g, a
+3, 2, 1, 2, 1, 1, 2
+
 \todo{}
 
 \collab{}
