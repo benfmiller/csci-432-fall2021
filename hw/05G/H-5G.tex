@@ -4,7 +4,7 @@
 %% UPDATE these variables:
 \renewcommand{\hwnum}{5}
 \title{Advanced Algorithms, Homework \hwnum}
-\author{\todo{Your Name Here}}
+\author{Ben Miller}
 \collab{\todo{list your collaborators here}}
 \date{due: Monday, 8 November 2021}
 
@@ -108,15 +108,60 @@ union-find data structure, with both ``heuristics.''
 
 Chapter 7, Question 1
 
+1. Let G = (V, E) be an arbitrary connected graph with weighted edges.
+
+(a) Prove that for any cycle in G, the minimum spanning tree of G excludes
+the maximum-weight edge in that cycle.
+
+(b) Prove or disprove: The minimum spanning tree of G includes the
+minimum-weight edge in every cycle in G.
+
 \begin{enumerate}[(a)]
 
     \item Excluding Maximum Weight Edges.
 
         \paragraph{Answer}
-        \todo{}
+
+        We will prove this by contradiction
+
+        \begin{proof}
+
+            Assume that the maximum-weight edge in a cycle is in the minimum spanning
+            tree.
+
+            Let G' be a subgraph of G where every vertex $v_{i}$ and edge $e_{i}$ in G'
+            is in a cycle in G. let W be the total weight of G'.
+
+            Because G' is a cycle, every $v_{i}$ can be reached by two edges.
+            Because we have included the maximum weight edge, we have excluded
+            another edge. The total weight of G' with the can be written $W = W -
+            weight(e_{max}) + weight(e_{max})$, while if we were to use a different
+            edge other than $e_{max}$, the total weight of G' would be written as
+            $W = W - weight(e_{max}) + weight(e_{i})$. Because $weight(e_{max}) > weight(e_{i})$, W would be smaller with $e_{i}$ than with $e_{max}$.
+
+            Therefore, the minimum spanning tree excludes the maximum-weight
+            edge in a cycle.
+
+        \end{proof}
 
 
     \item Including Minimum Weight Edges.
+
+        We will disprove this statement by contradiction.
+
+        \begin{proof}
+            Let G' be a cycle in G.
+
+            For this example, we will set all weights of G' to 4 and one edge
+            weight to 3 that we'll call $e_{3}$. Let one vertex connect to the vertices on either side
+            of $e_{3}$ with weights of 1 each. This new cycle will be called G".
+
+            The minimum spanning tree will contain the two edges with weights of 1
+            and will skip $e_{3}$, which is the minimum weight edge in G'.
+
+            Therefore, not every minimum-weight edge in every cycle in G is in
+            the minimum spanning tree of G.
+        \end{proof}
 
         \paragraph{Answer}
         \todo{}
@@ -128,6 +173,9 @@ Chapter 7, Question 1
 \nextprob{Maximum Weight Spanning Tree}
 
 Chapter 7, Question 4, Part(a).
+
+Describe and analyze an algorithm to compute the maximum-weight
+spanning tree of a given edge-weighted graph
 
 \paragraph{Answer}
 \todo{}
