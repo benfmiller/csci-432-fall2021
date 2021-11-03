@@ -56,9 +56,18 @@ defining $\cup_{b \in \mathtt{buildings}} \mathtt{rect}(b)$.  The output should
 start with $(\min_b{x_b^{(1)}},0)$ and end with $(\max_b{x_b^{(1)}},0)$.
 
 \paragraph{Answer}
+
+For this problem, we'll first sort the buildings by the left boundary. Then, we'll
+iterate through each building and perform the following steps:
+
+1. Add the ($x_b^{(1)}$,$y_b$) coordinate to the skyline if the current building is taller than the current height and advance
+x_{skyline} to.\\
+2. Add the ($x_b^{(2)}$,$y_b$) coordinate to a priority queue based on the height.
+
+
 \todo{}
 
-\collab{\todo{}}
+\collab{}
 \nextprob{Longest Increasing Subsequence}
 
 Next, we consider the problem of finding the longest increasing subsequence.
@@ -70,13 +79,14 @@ Next, we consider the problem of finding the longest increasing subsequence.
         3, 11 \right]$.  You can use either the algorithm presented in 2.6 or
         the algorithm presented in 2.7.
 
-        \paragraph{Answer} \todo{}
+        \paragraph{Answer}
+        2.7
+        \includegraphics[width=400,height=400,keepaspectratio,angle=-90]{BruteForceLIS.jpg}
 
     \item
         Walk through the algorithm (on the same input) using the Dynamic Programming algorithm
-        present in Section 3.6.
-
-        \paragraph{Answer} \todo{}
+        present in Section 3.6.\\
+        \includegraphics[width=400,height=400,keepaspectratio]{DynamicLIS.jpg}
 
 \end{enumerate}
 
@@ -95,7 +105,7 @@ $StrongComponents: D \rightarrow \mathbb{N}$
 
 If a vertex has no outgoing edges it is a sink. In each loop of the while loop,
 a vertex from a sink component is found and every vertex reachable in that sink
-component is removed. For each loop, $n = n - k | k >= 1$ and $m= m -j | j >= 1$
+component is removed. For each loop, $n = n - k$ with $k >= 1$ and $m= m -j$ with $j >= 1$
 
 In removing a sink component, a new sink component is always created until there
 are no more vertices.
