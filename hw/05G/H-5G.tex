@@ -41,7 +41,7 @@ General homework expectations:
         \end{itemize}
 \end{itemize}
 
-\collab{\todo{}}
+\collab{}
 \nextprob{The Skyline Problem}
 
 You are in Camden, NJ waiting for the ferry across the river to
@@ -57,15 +57,50 @@ start with $(\min_b{x_b^{(1)}},0)$ and end with $(\max_b{x_b^{(1)}},0)$.
 
 \paragraph{Answer}
 
-For this problem, we'll first sort the buildings by the left boundary. Then, we'll
-iterate through each building and perform the following steps:
+For this problem, we'll first sort the buildings by the left boundary. Then, we'll add a sentinel (-inf, 0) and (inf, 0). Then, we'll iterate through each building and perform the following steps:
 
-1. Add the ($x_b^{(1)}$,$y_b$) coordinate to the skyline if the current building is taller than the current height and advance
-x_{skyline} to.\\
-2. Add the ($x_b^{(2)}$,$y_b$) coordinate to a priority queue based on the height.
+1. Add ($x_b^{(1)}$,$y_{cur_height}$) and ($x_b^{(1)}$,$y_b$) to the skyline if the current building is taller than the current height.\\
+2. Go through next coordinates until x is greater than $x_b^{(2)}$\\
+3. remove points that are covered up and insert coordinates if needed
 
+\begin{algorithm} \caption{\textsc{skyline} (buildings)}\label{alg:seb}
+    {\bf Input:} list of buildings triples\\
+    {\bf Output:} list of skyline coordinates
+    \begin{algorithmic}[1]
+        \State$skyline[0] \gets (-\infty, 0)$
+        \State$skyline[1] \gets (\infty, 0)$
+        \State$lastBuildingStart \gets 0$
+        \For{$building\ in\ buildings$}
+            \State$curHeight \gets skyline[lastBuildingStart]$
+            \If{$building.height > curHeight$}
+                \State$skyline.insert(lastBuildingStart+1, (curheight, y_b) (x_b^{(2)}, y_b))$
+                \State$lastBuildingStart \gets lastBuildingStart + 2$
+            \EndIf{}
+            \State$nextBuilding = lastBuildingStart + 1$
+            \While{$skyline[nextBuilding].x >= building.x^{(1)}$}
+                \If{$skyline[nextBuilding].y < building.y$}
+                    \State$remove\ skyline[nextBuilding]$
+                    \State$add\ currentBuildingPoints$
+                \EndIf{}
+            \EndWhile{}
+        \EndFor{}
+        \State$remove skyline[0]\ and\ skyline[end]$
 
-\todo{}
+        \State$return\ skyline$
+    \end{algorithmic}
+\end{algorithm}
+
+{\bf Running Time:} The algorithm first sorts the list of buildings in $O(nlogn)$ time. It then makes a pass over every building. Within that pass, it checks all buildings in front of it that have an x value less than the current building and breaks if it isn't. There could potentially be $n$ buildings that end between the current building's start and end. So, the overall running time is $O(n^2)$. Using a doubly linked list (not implemented above) would decrease the insertion time to $O(1)$, while we only every scan the array in a straight line. So, if we kept track of the current node and moved from there, there would be no additional cost for scanning the array. Therefore the overall running time is $O(n^2)$.
+
+{\bf Correctness:} Loop invariant: For each building processed, the skyline behind it is already calculated.
+
+{\bf Initialization:} We sort the buildings by their left x and insert a sentinel start and end to the skyline.
+
+{\bf Maintenance:} The buildings are already sorted by left x, so we have already calculated the skyline for every building left of the current building. Within our loop, we iterate out to where the next building in the skyline has a farther x value than our current building. Along the way, we update the skyline where our building is taller.
+
+At the end of the loop, we have calculated the skyline for the current building and all buildings before it.
+
+{\bf End:} There are no more buildings, so we have calculated the skyline for every building. We remove the sentinel values and return the skyline.
 
 \collab{}
 \nextprob{Longest Increasing Subsequence}
@@ -90,7 +125,7 @@ Next, we consider the problem of finding the longest increasing subsequence.
 
 \end{enumerate}
 
-\collab{\todo{}}
+\collab{}
 \nextprob{Decrementing Function}
 
 Consider the algorithm \textsc{StrongComponents} given on in Figure 6.15 of the
@@ -105,9 +140,9 @@ $StrongComponents: D \rightarrow \mathbb{N}$
 
 If a vertex has no outgoing edges it is a sink. In each loop of the while loop,
 a vertex from a sink component is found and every vertex reachable in that sink
-component is removed. For each loop, $n = n - k$ with $k >= 1$ and $m= m -j$ with $j >= 1$
+component is removed. For each loop, $n = n - k$ with $k >= 1$ and $m= m -j$ with $j >= 1$ where k is the number of node in the sink and j is the number of edges in the sink.
 
-In removing a sink component, a new sink component is always created until there
+In removing a sink component, a new sink component is always created unless there
 are no more vertices.
 
 The statespace of StrongComponents decreases in each iteration of the while loop.
@@ -125,25 +160,25 @@ union-find data structure, with both ``heuristics.''
 
 a, b, c, d, e, f, g
 
-a, a, c, d, e, f, g
+a, a, c, d, e, f, g\\
 2, 1, 1, 1, 1, 1, 1
 
-a, a, c, a, e, f, g
+a, a, c, a, e, f, g\\
 2, 1, 1, 1, 1, 1, 1
 
-a, a, c, a, e, g, g
+a, a, c, a, e, g, g\\
 2, 1, 1, 1, 1, 1, 2
 
-a, a, b, a, e, g, g
+a, a, b, a, e, g, g\\
 3, 2, 1, 1, 1, 1, 2
 
-a, a, b, a, e, g, a
+a, a, b, a, e, g, a\\
 3, 2, 1, 1, 1, 1, 2
 
-a, a, b, a, d, g, a
+a, a, b, a, d, g, a\\
 3, 2, 1, 2, 1, 1, 2
 
-\todo{}
+
 
 \collab{}
 \nextprob{Maximum and Minimum Edges in Cycles}
@@ -191,14 +226,14 @@ minimum-weight edge in every cycle in G.
 
         \paragraph{Answer}
 
-        We will disprove this statement by contradiction.
+        We will disprove this statement by contradiction with an example.
 
         \begin{proof}
             Let G' be a cycle in G.
 
             For this example, we will set all weights of G' to 4 and one edge
             weight to 3 that we'll call $e_{3}$. Let one vertex connect to the vertices on either side
-            of $e_{3}$ with weights of 1 each. This new cycle will be called G".
+            of $e_{3}$ with weights of 1 each.
 
             The minimum spanning tree will contain the two edges with weights of 1
             and will skip $e_{3}$, which is the minimum weight edge in G'.
