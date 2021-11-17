@@ -80,7 +80,34 @@ minimum total weight. (The total weight of a spanning tree is the sum
 of the weights of its vertices.)
 
 \paragraph{Answer}
-\todo{answer here}
+
+For this algorithm, we will start with an arbitrary vertex and repeatedly add
+the smallest edge to our tree. This is pretty much Jarnik's algorithm. All
+of the minimum spanning tree algorithms esentially revolve around adding safe edges
+in the graph. By progressing through the graph with just our tree starting at our
+initial vertex, a safe edge will always be the smallest edge from the tree to another
+unvisited vertex.
+
+\begin{algorithm} \caption{\textsc{Jarnik's/Ben's minimum spanning tree} (G (E, V, w))}\label{alg:seb}
+    {\bf Input:} A weighted undirected graph with positive weights\\
+    {\bf Output:} A minimum spanning tree.
+    \begin{algorithmic}[1]
+        \State$select\ start\ vertex\ and\ initialize\ subgraph\ T$
+        \State$Initialize\ priority\ queue$
+        \For{$i \gets 1\ to\ |V| -1$}
+            \State$v \gets PriorityQueueMin$
+            \If{$v \notin T$}
+                \State$add\ v\ and\ edge_v\ to\ T$
+                \State$add\ edges\ not\ to\ T\ to\ PriorityQueue$
+            \EndIf{}
+        \EndFor{}
+    \end{algorithmic}
+\end{algorithm}
+
+We interact with every vertex and every edge, so we immediately have O(V+E). By
+marking the vertices when we add them to T, we can determine if a vertex is in T
+i O(1) time. Extracting and adding to the priority queue can be done in O(logv) time
+which is done on each vertex, so the overall running time is O(E+VlogV)
 
 \nextprob{MED}
 Consider the randomized minimum enclosing disc (MED) algorithm.  In this
