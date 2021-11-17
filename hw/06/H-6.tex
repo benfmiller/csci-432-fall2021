@@ -56,13 +56,37 @@ taken 232 and 246, but not 432, has some questions about this problem:
     \item \emph{What} is the problem that this algorithm solves?
 
         \paragraph{Answer}
-        \todo{}
+        I'm going to describe the concept of backtracking. Before this class, I did
+        not have a very good grasp on this concept and how it differs from recursion.
+
+        Backtracking builds on recursion by taking a problem and slowly exploring
+        all the possible paths to reach the best answer.
+
+        Backtracking is solving a problem through exploration with constraints rather than pure
+        computation.
 
     \item \emph{How} does it work? (Describe in prose, with or without
         psuedocode.)
 
         \paragraph{Answer}
-        \todo{}
+        To illustrate how backtracking works, I'm going to use the N Queens problem
+        from the textbook.
+
+        A naive recursive algorithm might try every possible combination of queen
+        positions in a recursive loop and evaluate them to see if there are colisions. This would be
+        extremely slow and wouldn't take advantage of the constraints of the problem.
+
+        To use backtracking, we initially only put one queen on the board. Then,
+        we cross out all the squares that this queen blocks and recurse. This lets
+        us not waste time on already blocked squares.
+
+        Another example where backtracking saves the day is in maze solving. We
+        can use backtracking to fully explore paths and mark them as explored along
+        the way. This way, when we unwind the recursive stack, we can skip exploring
+        already explored areas.
+
+        At the end of the day, backtracking is just using the constraints of the
+        problem to avoid calculating the same thing twice.
 
 \end{enumerate}
 
