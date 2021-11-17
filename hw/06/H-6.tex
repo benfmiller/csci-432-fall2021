@@ -218,7 +218,27 @@ Prove that the generic algorithm for SSSP, \textsc{FordSSSP}, terminates using a
 decrementing function.
 
 \paragraph{Answer}
-\todo{answer here}
+
+\begin{algorithm} \caption{\textsc{FordSSSP} (s)}\label{alg:seb}
+    {\bf Input:} source vertex\\
+    {\bf Output:} distances to vertices
+    \begin{algorithmic}[1]
+        \State$InitSSSP(s)$
+        \While{$there\ is\ at\ least\ one\ tense\ edge$}
+            \State$relax\ any\ tense\ edge$
+        \EndWhile\\
+    \end{algorithmic}
+\end{algorithm}
+
+"an edge u to v is tense if dist(u)+w(u to v) $<$ dist(v)."
+
+$$d : \mathcal{S} \rightarrow \mathbb{R}$$
+$$d(\matchcal{S_{i+1}}) < d(\matchcal{S_i})$$
+
+For every loop through FordSSSP, the sum of the distances to each vertex decreases.
+Each pass relaxes a tense edge which reduces the total distance of the graph. Once
+the total distance is at its minimum, there will be no more tense edges to relax
+and the algorithm will terminate.
 
 \collab{TODO}
 \nextprob{All Pairs Shortest Paths}
