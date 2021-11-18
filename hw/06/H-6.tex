@@ -170,24 +170,24 @@ radius of the smallest enclosing ball.
 \begin{enumerate}[(a)]
     \item
         Suppose $S=\emptyset$ and $\Sigma=\{ (a_x,a_y)\}$. What ball is returned on Line 2?
-        \paragraph{Answer}
-        \todo{answer here}
+        \paragraph{Answer} The ball is centered on $(a_x,a_y)$ with radius zero. $B = ((a_x,a_y), 0)$
     \item
         Suppose $S=\emptyset$ and $\Sigma=\{ a=(a_x,a_y),b=(b_x,b_y)\}$, what ball is returned on Line 2?
         \paragraph{Answer}
-        \todo{answer here}
+        The ball whose center is between a and b with a radius of the distance to a.\\
+        $B = (j = (\frac{a_x + b_x}{2},\frac{a_x + b_x}{2}), dist(j, x))$
     \item
         Suppose $S=\emptyset$ and $\Sigma=\{ a=(a_x,a_y),b=(b_x,b_y)\}$, what ball is returned on Line 2?
         \paragraph{Answer}
-        \todo{answer here}
-
+        Same as last question?\\
+        The ball whose center is between a and b with a radius of the distance to a.\\
+        $B = (j = (\frac{a_x + b_x}{2},\frac{a_x + b_x}{2}), dist(j, x))$
     \item Let $T(n)$ be the time complexity of MED($S$, $\Sigma$) when
         $|S|=n$.  Give the worst-case recurrence~relation.\label{recursive-form}
-        \paragraph{Answer}
-        \todo{answer here}
+        \paragraph{Answer} $MED(n) = 2 \cdot MED(n-1) + \Theta(1)$\\
+        The worst case would be if S[i] $\notin$ B for each recursive loop, which means every point is on the boundary.
     \item What is the asymptotic form of your answer to (\ref{recursive-form})?
-        \paragraph{Answer}
-        \todo{answer here}
+        \paragraph{Answer} $O(2^n)$
 \end{enumerate}
 
 
