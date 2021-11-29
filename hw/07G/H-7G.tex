@@ -42,7 +42,6 @@ General homework expectations:
 \end{itemize}
 
 
-\collab{\todo{}}
 \nextprob{}
 
 The \texttt{rand()} function in the standard C library returns a
@@ -50,6 +49,21 @@ uniformly random number in \texttt{[0,RANDMAX-1]}. Does \texttt{rand}()$\mod n$
 generate a number uniformly distributed in $[0,n-1]$? (Prove or disprove).
 
 % Note I: This is the second variant in EPI 5.12.
+
+\paragraph{Answer}
+No, \texttt{rand}()$\mod n$ will not generate a number uniformly distributed in
+$[0,n-1]$. This would only work in the case where RANDMAX was a multiple of n.
+
+Let us consider the case where RANDMAX = 5 and n = 3. Let A = a set of numbers from
+0 to 4. By appliying $\mod n$ to each number in A, we get [0, 1, 2, 0, 1], which
+gives us the frequencies [2,2,1]. Because the rand function is uniformly destributed,
+this transform will not be uniformly distributed.
+
+If we apply the same process with RANDMAX = 6 and n = 3, we get a frequency list of
+[2,2,2]. In the general case where RANDMAX is a multiple of n, the distribution of
+\texttt{rand}()$\mod n$ will be uniform.
+
+Therefore, \texttt{rand}()$\mod n$ will not always be uniformly distributed.
 
 
 
@@ -111,7 +125,40 @@ Chapter 10, Question 4, (Opposing Edges)
 
 Chapter 11, Question 6, (Mini-Golf)
 
+The SPU Commuter Silence Department is installing a mini-golf course in
+the basement of the See-Bull Center! The playing field is a closed polygon
+bounded by m horizontal and vertical line segments, meeting at right angles.
+The course has n starting points and n holes, in one-to-one correspondence.
+It is always possible hit the ball along a straight line directly from each
+starting point to the corresponding hole, without touching the boundary
+of the playing field. (Players are not allowed to bounce golf balls off the
+walls; too much glass.) The n starting points and n holes are all at distinct
+locations.
+Sadly, the architect’s computer crashed just as construction was about to
+begin. Thanks to the herculean efforts of their sysadmins, they were able to
+recover the locations of the starting points and the holes, but all information
+about which starting points correspond to which holes was lost!
+Describe and analyze an algorithm to compute a one-to-one correspon-
+dence between the starting points and the holes that meets the straight-line
+requirement, or to report that no such correspondence exists. The input
+consists of the x- and y-coordinates of the m corners of the playing field, the
+n starting points, and the n holes. Assume you can determine in constant
+time whether two line segments intersect, given the x- and y-coordinates
+of their endpoints.
+
 \paragraph{Answer}
+
+A backtracking algorithm truly makes the most sense to me here even though I know this
+is an application of flows and cuts
+
+\begin{algorithm} \caption{\textsc{GolfPairing} (Corners, Starts, Holes)}\label{alg:seb}
+    {\bf Input:} x,y coordinates of corners, starts, and holes\\
+    {\bf Output:} one to one pairing between starts and holes
+    \begin{algorithmic}[1]
+        \State$$
+    \end{algorithmic}
+\end{algorithm}
+
 \todo{answer here}
 
 
