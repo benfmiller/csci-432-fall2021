@@ -16,3 +16,4 @@ notes/*/*.out
 .icon
 myNotes
 *Session*.vim
+projCode
