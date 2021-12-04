@@ -42,6 +42,7 @@ General homework expectations:
 \end{itemize}
 
 
+\collab{}
 \nextprob{}
 
 The \texttt{rand()} function in the standard C library returns a
@@ -76,7 +77,7 @@ might not always give the right answer; however, they either have a high
 probability of being correct or close to correct.
 
 \begin{enumerate}[(a)]
-    \item Give a Monte Carol algorithm to estimate~$\pi$.
+    \item Give a Monte Carlo algorithm to estimate~$\pi$.
     \item Let $n$ be the number of random numbers used by your algorithm.
         Explain why as $n \to \infty$, the expectation of the output for your
         algorithm is~$\pi$.
@@ -88,7 +89,9 @@ Note: Assume that there is a function \texttt{randReal}$[a,b]$ that returns a ra
 real number between $a$ and $b$, iid from the uniform distribution over the
 interval $[a,b]$.
 
-
+We create a one by one square and inscribe a circle. From all the random points
+given, we map them to coordinates in the square. The ratio of points in the circle
+to all points will approximate a proportion a proportion of pi.
 
 \collab{\todo{}}
 \nextprob{}
@@ -102,6 +105,26 @@ research).  Detail of the algorithm and proofs of correctness or runtime should
 be only given at a very high level.
 
 \paragraph{Answer}
+
+Kruskal's minimum spanning tree.
+
+Problem: Minimum spanning tree
+applications: Delivery networks. Minimize total routes/roads/cables/costs. Telephone networks. Water Usage. Sewage networks
+1956 discovered.
+
+A new algorithm has entered the scene!
+
+Joseph Kruskal
+
+Kruskal's algorithm is no Krusty Krab!
+
+Think about how many networks there are in the world. From roads to irrigation,
+telephone wires to sewage pipes, railroads to newspapers, networks are a huge
+part of the world's infrastructure. The world is vast and infrastructure is expensive.
+Joseph Kruskal has just published a new "Minimum Spanning Tree" algorithm that
+will drastically reduce spending everywhere.
+
+
 \todo{answer here}
 
 
@@ -111,13 +134,92 @@ be only given at a very high level.
 
 Chapter 8, Question 4, Part(a)
 
+For any edge e in any graph G, let G minus e denote the graph obtained by
+deleting e from G. Suppose we are given a graph G and two vertices s
+and t. The replacement paths problem asks us to compute the shortest-path
+distance from s to t in G minus e, for every edge e of G. The output is an array
+of E distances, one for each edge of G.
+
+(a) Suppose G is a directed graph, and the shortest path from vertex s to
+vertex t passes through every vertex of G. Describe an algorithm to solve
+this special case of the replacement paths problem in O(E log V ) time.
+
+\paragraph{Answer}
+Because the shortest path from vertex s to vertex t passes through every vertex
+of G, we know that the shortest path minus e lies on some path that goes through
+a subset of the vertices up to e and a subset of the vertices after e. So, if
+an edge is taken out of the shortest path, we will walk back from the edge that was
+taken out and we will try every edge that connects to the path after the missing
+edge to see if it is shorter.
+
+\begin{algorithm} \caption{\textsc{RemoveEdges} (G)}\label{alg:seb}
+    {\bf Input:} directed graph\\
+    {\bf Output:} array of E distances
+    \begin{algorithmic}[1]
+        \State$Path \gets Djikstra\ shortest\ path$
+        \State$EArray \gets array\ with\ length\ |E|$
+        \State$NotInPathSet \gets new\ set$
+        \For{$edge\ e \in E$}
+            \If{$e \notin Path$}
+                \State$EArray[e] \gets len(Path)$
+            \Else{}
+                \State$NotInPathSet\ add\ e$
+            \EndIf{}
+        \EndFor{}
+        \For{$e \in NotInPathSet$}
+            \State$tempNotInPathSet \gets new\ set$
+            \State$shortestPath \gets \infty$
+            \State$curVertex \gets vertex\ before\ e$
+            \For{$f \in edges\ from\ curVertex\ to\ vertex\ after\ e$}
+                \If{$len(Path) - len(Path\ to\ )$}
+
+                \EndIf{}
+
+
+
+            \EndFor{}
+
+
+
+        \EndFor{}
+
+    \end{algorithmic}
+\end{algorithm}
+
+            TODOasdfj
 
 \collab{\todo{}}
 \nextprob{}
 
 Chapter 10, Question 4, (Opposing Edges)
+Let G be a flow network that contains an opposing pair of edges u  v and
+v  u, both with positive capacity. Let G 0 be the flow network obtained from G
+by decreasing the capacities of both of these edges by min{c(u  v), c(v  u)}.
+In other words:
+
+• If c(u  v) > c(v  u), change the capacity of u  v to c(u  v) − c(v  u)
+and delete v  u.
+344Exercises
+
+• If c(u  v) < c(v  u), change the capacity of v  u to c(v  u) − c(u  v)
+and delete u  v.
+
+• Finally, if c(u  v) = c(v  u), delete both u  v and v  u.
+
+(a) Prove that every maximum (s, t)-flow in G 0 is also a maximum (s, t)-flow
+in G. (Thus, by simplifying every opposing pair of edges in G, we obtain
+a new reduced flow network with the same maximum flow value as G.)
+
+(b) Prove that every minimum (s, t)-cut in G is also a minimum (s, t)-cut
+in G 0 and vice versa.
+
+(c) Prove that there is at least one maximum (s, t)-flow in G that is not a
+maximum (s, t)-flow in G 0
 
 \paragraph{Answer}
+
+Choose the maximum edge and reduce it by the minimum edge. Remove the minimum edge
+
 \todo{answer here}
 
 \collab{\todo{}}
