@@ -109,28 +109,22 @@ be only given at a very high level.
 
 \paragraph{Answer}
 
-Kruskal's minimum spanning tree.
+Kruskal's algorithm is no Krusty Krab!\\
+Discovered in 1956 \footnote{Used information from the textbook}
 
-Problem: Minimum spanning tree
-applications: Delivery networks. Minimize total routes/roads/cables/costs. Telephone networks. Water Usage. Sewage networks
-1956 discovered.
+Think about how many networks there are in the world. From roads to irrigation, telephone wires to sewage pipes, railroads to newspapers, networks are a huge part of the world's infrastructure. The world is vast and infrastructure is expensive. Joseph Kruskal has just published a new "Minimum Spanning Tree" algorithm that will drastically reduce spending everywhere.
 
-A new algorithm has entered the scene!
+Any network can be broken down into vertices and edges. For this example, lets work with telephone cables within a state. A city or town is a vertex, and a path connecting them is an edge. We are not immediately concerned with capacities here, yet, so it would theoretically be fine if all traffic were to go through one edge. There is no point in connecting a city to another city through two paths, which makes this network a “tree.”
 
-Joseph Kruskal
+Installing all of those cables requires a lot of money for materials and equipment and a lot of training and hours to build. Not to mention maintenance! The problem here is to minimize the amount of cable laid to maximize profits and minimize downtime in the case of an outage. We need to install those cables and span all the cities with minimal material. Thus, we get a minimum spanning tree.
 
-Kruskal's algorithm is no Krusty Krab!
+The core idea behind this algorithm is really quite simple, but the hard part is the proof. Kruskal’s algorithm can be boiled down to one simple statement. “Scan all edges by increasing weight; if an edge is safe, add it to the tree.” A safe edge is just an edge that won’t make a loop in the network, which would make it not a tree anymore.
 
-Think about how many networks there are in the world. From roads to irrigation,
-telephone wires to sewage pipes, railroads to newspapers, networks are a huge
-part of the world's infrastructure. The world is vast and infrastructure is expensive.
-Joseph Kruskal has just published a new "Minimum Spanning Tree" algorithm that
-will drastically reduce spending everywhere.
+The algorithm is quite fast for most applications. If we were running this algorithm on a massive network with millions of edges, say a complex, statewide sewer system, it could take a while to run! The overall running time of Kruskal’s algorithm is O(E log V), with the longest part of the algorithm being the initial sorting of the edges. This running time is really good, and it certainly shouldn’t slow down any development plans.
 
+Real world scenarios sometimes require there to be loops in networks, capacities can become a problem, or managing a large channel can become expensive. A tree is just not fit for all applications. A minimum spanning tree can still be a great place to start. New edges can be added in after an initial base is completed, or some edges in the current minimum spanning tree can be removed and a second tree can be calculated and combined with the first. Although not directly applicable to tons of areas, a minimum spanning tree can serve as an algorithmically optimal base from which to plan the final network.
 
-\todo{answer here}
-
-
+\todo{get feedback from Rachel}
 
 \collab{\todo{}}
 \nextprob{Removing an Edge}
