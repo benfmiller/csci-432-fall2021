@@ -170,26 +170,25 @@ edge to see if it is shorter.
             \EndIf{}
         \EndFor{}
         \For{$e \in NotInPathSet$}
-            \State$tempNotInPathSet \gets new\ set$
+            % \State$tempNotInPathSet \gets new\ set$
             \State$shortestPath \gets \infty$
             \State$curVertex \gets vertex\ before\ e$
             \For{$f \in edges\ from\ curVertex\ to\ vertex\ after\ e$}
-                \If{$len(Path) - len(Path\ to\ )$}
-
+            \State$newLen \gets len(Path\ to\ curVertex) + f + len(Path\ from\ f\ to\ t) $
+                \If{$newLen < shortestPath$}
+                \State$ShortestPath \gets newLen$
                 \EndIf{}
-
-
-
+                \State$EArray[e] \gets newLen$
             \EndFor{}
-
-
-
         \EndFor{}
-
+        \State$return\ EArray$
     \end{algorithmic}
 \end{algorithm}
 
-            TODOasdfj
+With our nifty knowledge that the shortest path passes through every vertex, we
+are able to calculate the shortest path for each edge removed in $O(E log V)$ time.
+
+We can put each edge that is in the shortest path found by an initial djikstra run into a set. Then, we can check whether each edge is in that set in constant time. If the edge is not in that set, updating EArray for removing that edge takes constant time. If the edge is in that set, it takes $O(E log V)$ time. There are E edges that we need to check, so the overall running time is $O(E (E log V))$.
 
 \collab{\todo{}}
 \nextprob{}
