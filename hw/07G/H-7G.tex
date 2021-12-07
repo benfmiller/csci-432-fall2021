@@ -89,9 +89,12 @@ Note: Assume that there is a function \texttt{randReal}$[a,b]$ that returns a ra
 real number between $a$ and $b$, iid from the uniform distribution over the
 interval $[a,b]$.
 
+\paragraph{Answer}
 We create a one by one square and inscribe a circle. From all the random points
 given, we map them to coordinates in the square. The ratio of points in the circle
 to all points will approximate a proportion a proportion of pi.
+
+\todo{answer here}
 
 \collab{\todo{}}
 \nextprob{}
@@ -236,6 +239,7 @@ starting point to the corresponding hole, without touching the boundary
 of the playing field. (Players are not allowed to bounce golf balls off the
 walls; too much glass.) The n starting points and n holes are all at distinct
 locations.
+
 Sadly, the architect’s computer crashed just as construction was about to
 begin. Thanks to the herculean efforts of their sysadmins, they were able to
 recover the locations of the starting points and the holes, but all information
@@ -250,22 +254,31 @@ of their endpoints.
 
 \paragraph{Answer}
 
-A backtracking algorithm truly makes the most sense to me here even though I know this
+A backtracking algorithm truly makes the most sense to me even though I know this
 is an application of flows and cuts
+
+I am taking inspiration from the algorithm given in Algorithms (Jeff Erickson) 11.4 for this problem.
+
+To solve this problem with maximum flows, we will first hook up all holes to all starts
+with a capacity of one where each edge is a possible connection (no connections go through walls). Then, we connect a vertex s to each start and a vertex t to each hole. Finally, to ensure that each vertex has a capacity of one, we convert each vertex in holes and starts to two vertices. The incoming edges are directed to one vertex, an edge with capacity of one connects to the other vertex, and all outgoing edges connect to that outgoing vertex. Then, we run a maximum flow between s and t. If the value of the maximum flow is less than the total number of starts or holes, then there is not a possible matching.
 
 \begin{algorithm} \caption{\textsc{GolfPairing} (Corners, Starts, Holes)}\label{alg:seb}
     {\bf Input:} x,y coordinates of corners, starts, and holes\\
     {\bf Output:} one to one pairing between starts and holes
     \begin{algorithmic}[1]
-        \State$$
+        \State$Graph \gets\ Set\ up\ graph$
+	\State$Flow \gets\ JohnHopcroftRichardKarpBipartiteMatching(Graph)$
+	\If$|Flow| < size(starts)$
+		\State$return\ no\ matching\ exists$
+	\EndIf{}
+	\State$return\ each\ disjoint\ path\ \in Flow - s\ and\ t$
     \end{algorithmic}
 \end{algorithm}
 
-\todo{answer here}
+To set up the graph, we have to calculate whether an edge is possible for each pair of start and hole vertices. We check that by seeing if the connecting line intersects with any of the lines from the course, which has M corners. This runs in $\Theta((N+M)^2)$ time. Performing the vertex transposition and hooking up s and t will run in $\Theta(N)$ time.
 
+The book references a maximum bipartite matching that runs in $O( V^{½} E)$ time, so we could use that algorithm to achieve that runtime for the matching section. The $\Theta(N^2)$ step dominates the algorithm, so the overall running time runs in $\Theta((N+M)^2)$ time.
 
-
-
-
+The algorithm for finding the matching itself revolves around finding alternating paths, then merging those paths with the symmetric difference with the flow.
 
 \end{document}
