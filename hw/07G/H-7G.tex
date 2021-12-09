@@ -4,7 +4,7 @@
 %% UPDATE these variables:
 \renewcommand{\hwnum}{7}
 \title{Advanced Algorithms, Homework \hwnum}
-\author{Ben Miller}
+\author{Ben Miller, Devan Eastman-Pittam}
 \collab{\todo{list your collaborators here}}
 \date{due: Monday, 8 December 2021}
 
@@ -133,7 +133,7 @@ Feedback from friend:
 
 "I don't know what you are talking about really, but I love the enthusiasm! Descriptive language is nice!" I tried to write the page to be impactful rather than straight forward, which does make it harder to see what I'm actually talking about.
 
-\collab{\todo{}}
+\collab{}
 \nextprob{Removing an Edge}
 
 Chapter 8, Question 4, Part(a)
@@ -191,12 +191,12 @@ are able to calculate the shortest path for each edge removed in $O(E log V)$ ti
 
 We can put each edge that is in the shortest path found by an initial djikstra run into a set. Then, we can check whether each edge is in that set in constant time. If the edge is not in that set, updating EArray for removing that edge takes constant time. If the edge is in that set, it takes $O(E log V)$ time. There are E edges that we need to check, so the overall running time is $O(E (E log V))$.
 
-\collab{\todo{}}
+\collab{}
 \nextprob{}
 
 Chapter 10, Question 4, (Opposing Edges)
 Let G be a flow network that contains an opposing pair of edges u  v and
-v  u, both with positive capacity. Let G 0 be the flow network obtained from G
+v  u, both with positive capacity. Let G`  be the flow network obtained from G
 by decreasing the capacities of both of these edges by min{c(u  v), c(v  u)}.
 In other words:
 
@@ -209,21 +209,27 @@ and delete u  v.
 
 • Finally, if c(u  v) = c(v  u), delete both u  v and v  u.
 
-(a) Prove that every maximum (s, t)-flow in G 0 is also a maximum (s, t)-flow
+\includegraphics[width=250,height=250,keepaspectratio]{CounterExampleGraphs.jpg}
+
+(a) Prove that every maximum (s, t)-flow in G` is also a maximum (s, t)-flow
 in G. (Thus, by simplifying every opposing pair of edges in G, we obtain
 a new reduced flow network with the same maximum flow value as G.)
 
+\paragraph{Answer} In the included graph above, we provide a counter example. The maximum flow in G` resides in the left branch, while the maximum flow in G resides in the right branch.
+
 (b) Prove that every minimum (s, t)-cut in G is also a minimum (s, t)-cut
-in G 0 and vice versa.
+in G` and vice versa.
+
+According to the Maxflow-Mincut Theorem, In every flow network with source s and
+target t, the value of the maximum (s, t)-flow is equal to the capacity of the
+minimum (s, t)-cut. \footnote{retrieved from Jeff Erickson's Algorithms} By maxflow-mincut theorem, the value of the maximum flow is equivalent to the value of the minimum cut, thus the counter example for part a also holds for part b.
 
 (c) Prove that there is at least one maximum (s, t)-flow in G that is not a
-maximum (s, t)-flow in G 0
+maximum (s, t)-flow in G`
 
-\paragraph{Answer}
+To prove that there is at least one maximum (s, t)-flow in G that is not a maximum (s, t)-flow in G`, we will again use the graphs above. If we look at the lower graph G, we see that there is a flow of one from s to t. In G`, there is no flow.
 
-Choose the maximum edge and reduce it by the minimum edge. Remove the minimum edge
-
-\todo{answer here}
+For an arbitrary G`, there will be no flow over the lesser edge in G, which would be possible in G. Therefore, there will always be a flow through the lesser or equal paths in G that is not possible in G`.
 
 \collab{}
 \nextprob{}
