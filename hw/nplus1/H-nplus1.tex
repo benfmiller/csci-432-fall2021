@@ -6,17 +6,15 @@
 
 %% UPDATE these variables:
 \renewcommand{\hwnum}{n+1}
-\title{Advanced Algorithms, Homework \hwnum}
-\author{TODO-Put Your Name Here}
+\title{Advanced Algorithms, Homework \hwnum -st}
+\author{Ben Miller}
 \collab{n/a}
-\date{due: \todo{}}
+\date{due: Day of final exam meeting period}
 
 
 \begin{document}
 
-\section*{$(n+1)$-st Homework Assignment}
-
-{\bf{Due Date}}: Day of final exam meeting period.\\
+\maketitle
 
 This is your final assignment for CSCI 432.
 
@@ -32,6 +30,89 @@ Remember, style counts. Use complete sentences.
 
 \paragraph{Answer}
 
-It's hard to describe exactly how I've grown over the last semester, but I know I've grown a lot. One aspect in particular that I've gotten better at is being able to focus 100\% of my attention on what I'm doing.
+It's hard to describe exactly how I've grown over the last semester, but I know I've grown a good amount. In trying to think about concrete examples to give for this assignment, I could only really come up with general ones. Three areas that I can point to and say that I've progressed are in my algorithmic problem solving process, my software design knowledge, and my approach to homework/tasks in general.
+
+I am currently an Undergraduate Research Assistant for Dr. Maher researching audio alignment techniques. My progress this semester for that project has been pretty slow. I hit a complexity wall with the program I wrote, so I've spent most of the semester refactoring that project to be more extendable. This project has shown a lot of growth more me as a software engineer over its lifespan. I've worked on it for almost two years, now, and its design has changed significantly a couple of times as I've gotten more experience with software engineering.
+
+A year ago, in an internship interview (that I didn't get), I was asked what the hardest part of the software development process is for me. At the time, my answer was the design stage. This semester, I took Software Engineering and Multidisciplinary Engineering Design, and I have leared a lot about the design process and how to approach a problem. Now, I can confidently say that the hardest part of the software development process is estimating the amount of time and effort required to accomplish something. The hard part of estimating timeframes for me has been that as I've grown as a software engineer, I get better at learning what things are possible to accomplish, but not how long it would take me to learn to do them. This really bit me in Multidisciplinary Engineering Design with building a rover. For that project, the limiting factor for me was my knowledge of electrical engineering. I thought my group members knew something enough about it for the project, but instead I had to switch gears from learning how to program an RC car to learning how to build an RC car.
+
+My algorithmic problem solving process has become a lot more defined throughout this course. Prior to this course, I would usually approach a problem with a "solve it directly" approach. A lot of problems lended themselves to being broken down with intermediate results stored in a temporary structure, so I often thought that dynamic programming was just solving it normally. I didn't know what dynamic programming was! I had heard the term many times before and had looked it up several times, but I never really got what differed from it and general problem solving techniques. Now, I am a lot more conscious about how I employ dynammic programming and other techniques.
+
+I have taken a lot of inspiration from the textbook and the course progression in how I tackle new problems. I often start with a "just get a solution" technique and follow up with incremental improvements until I can't find any ways to improve it. I also spend a good amount of time considering ways to "just get a solution" and what the possible improvements are for each of them. I used to generally avoid recursion unless the problem specifically called for it, but I am much more willing to use it now. I am also a lot more familiar with the process of turning a recursive algorithm into a non-recursive algorithm and much more willing to start with a recursive algorithm and build out an answer from there.
+
+To illustrate how this algorithmic process helped me get an internship for next summer, I'll tell the brief tale of my internship process with Amazon. It all started with the hackerrank tests. In applying to eBay through Handshake, they had me sign up and apply through RippleMatch. RippleMatch was really good about matching me with companies it thought I had a good chance of getting an interview with. Most of the companies I applied to on RippleMatch sent me a Hackerrank code test, so I set aside a day to do four tests.
+
+I decided to do the Amazon Hackerrank test last so that I was warmed up after the other tests. Just by luck, one of the questions on the Amazon test was a question I had already gotten! It was just a matter of remembering how I solved it the first time and making some improvements. The other question was not very tough, and I employed the "just get a solution" technique and improved on it from there. I settled on a solution that worked well and was clear, but I realized afterwards that it was not quite optimal.
+
+The part of the process that shows my growth was really the interview itself. It was my fourth interview of the semester, so I had some practice. My first interview of the semester went poorly, and I still often think about it. It was a real learning experience. Needless to say, I had learned from my prior experiences and was ready for this interview. The week was long, however, and when it came time to do the coding part of the interview, my brain was fried.
+
+The problem was a simple binary tree validation. On any other day, this problem would have been a piece of cake, but I could not code up a solution for the life of me. Luckily, I expressed my ideas clearly and my interviewer and I were on the same page. I came up with an optimal solution, but I just couldn't get it into the computer. The solution I ended up coding ran in $\Theta(n!)$! Other than the coding section of that interview, I thought it went well, but I failed on the implementation of the coding section so thoroughly that I was certain I wouldn't get an offer.
+
+The biggest takeaway for me is that communication seconded by well thought-out ideas are the most important aspect to a job interview and work in general. Communication is, a lot of the time, the verbalization of plans. In communicating, plans have to be cemented and developed before they are expressed. In this way, communication also encompases planning. This class has had communication as a large aspect of the work, which has undoubtedly helped with my communication in other areas.
+
+My concrete example for I how I've learned to prioritize communication over implementation is in my approach to providing algorithms in the homeworks. In the appendix, I give a section from homework 2-4 and a section from homework 7-6. In my earlier work, I prioritized the pseudocode. I followed the python philosophy of "the code is its own documentation." However, pseudocode is rarely ever as readable as a prose explanation. My later work in this class has focused a lot more on trying to communicate the ideas of the algorithm and my justifications rather than trying to let the pseudocode stand on its own.
+
+While it is hard for me to point at a piece of work and say that I've grown, my overall approach has grown a lot this semester. I've moved a little bit away from a discipline based approach to motivation based approach. What use is discipline if you make yourself dislike what you used to love? I've learned a lot this semester about what my limits as a researcher and a student are. Every task requires the right approach, which always starts with some degree of reflection before trying to tackle.
+
+\pagebreak
+\section*{Appendix}
+
+\section{HW 2-4. Chapter 2, Problem 4 (d)}
+We will calculate this like we did the first way for longest increasing subsequence, but we'll add a
+flag to tell if it's increasing or decreasing (even or odd)
+The initial call to the recursive algorithm gives even as false to account for the sentinel value
+
+\begin{algorithm} \caption{\textsc{LongestOscillating} ($A[1..n]$)}\label{alg:seb}
+    {\bf Input:} A sequence\\
+    {\bf Output:} The length o the longest oscillating subsequence
+    \begin{algorithmic}[1]
+        \State$A[0] \gets - \infty$
+        \State$return\ LongestOscillatingRecursive(0, 1, false) -1$
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} \caption{\textsc{LongestOscillatingRecursive} (i, j, even)}\label{alg:seb}
+    {\bf Input:} indexes i and j, and boolean if even\\
+    {\bf Output:} length of Longest Oscillating Subsequence
+    \begin{algorithmic}[1]
+        \If{$j > n$}
+            \State$return\ 0$
+        \ElsIf{$even = true$}
+            \If{$A[i] \geq A[j]$}
+                \State$return\ LongestOscillatingRecursive(i, j+1, even)$
+            \EndIf{}
+        \Else{}
+            \If{$A[i] \leq A[j]$}
+                \State$return\ LongestOscillatingRecursive(i, j+1, even)$
+            \EndIf{}
+        \EndIf{}
+        \State$skip \gets LongestOscillatingRecursive(i, j+1, even)$
+        \State$take \gets LongestOscillatingRecursive(i, j+1, not even) +1$
+        \State$return\ max\{skip, take\}$
+    \end{algorithmic}
+\end{algorithm}
+
+
+\section{HW 7-6. Chapter 11, Problem 6}
+
+To solve this problem with maximum flows, we will first hook up all holes to all starts
+with a capacity of one where each edge is a possible connection (no connections go through walls). Then, we connect a vertex s to each start and a vertex t to each hole. Finally, to ensure that each vertex has a capacity of one, we convert each vertex in holes and starts to two vertices. The incoming edges are directed to one vertex, an edge with capacity of one connects to the other vertex, and all outgoing edges connect to that outgoing vertex. Then, we run a maximum flow between s and t. If the value of the maximum flow is less than the total number of starts or holes, then there is not a possible matching.
+
+\begin{algorithm} \caption{\textsc{GolfPairing} (Corners, Starts, Holes)}\label{alg:seb}
+    {\bf Input:} x,y coordinates of corners, starts, and holes\\
+    {\bf Output:} one to one pairing between starts and holes
+    \begin{algorithmic}[1]
+        \State$Graph \gets\ Set\ up\ graph$
+	\State$Flow \gets\ JohnHopcroftRichardKarpBipartiteMatching(Graph)$
+	\If$|Flow| < size(starts)$
+		\State$return\ no\ matching\ exists$
+	\EndIf{}
+	\State$return\ each\ disjoint\ path\ \in Flow - s\ and\ t$
+    \end{algorithmic}
+\end{algorithm}
+
+To set up the graph, we have to calculate whether an edge is possible for each pair of start and hole vertices. We check that by seeing if the connecting line intersects with any of the lines from the course, which has M corners. This runs in $\Theta((N+M)^2)$ time. Performing the vertex transposition and hooking up s and t will run in $\Theta(N)$ time.
+
+The book references a maximum bipartite matching that runs in $O( V^{½} E)$ time, so we could use that algorithm to achieve that runtime for the matching section. The $\Theta(N^2)$ step dominates the algorithm, so the overall running time runs in $\Theta((N+M)^2)$ time.
 
 \end{document}
